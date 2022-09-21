@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta charset="utf-8"></meta>
+<title>Design Packages</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+
+
+<!-- Favicon -->
+<link href="./resources/img/logo.ico" rel="icon" />
+
+<!-- Google Web Fonts -->
+<link rel="preconnect" href="https://fonts.gstatic.com"></link>
+<link
+	href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;display=swap"
+	rel="stylesheet"></link>
+
+<!-- Font Awesome -->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+	rel="stylesheet"></link>
+
+<!-- Libraries Stylesheet -->
+<link href="./resources/lib/owlcarousel/assets/owl.carousel.min.css"
+	rel="stylesheet"></link>
+<link
+	href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+	rel="stylesheet"></link>
+
+<!-- Customized Bootstrap Stylesheet -->
+<link href="./resources/css/designPackages.css" rel="stylesheet"></link>
+<style>
+body {
+	background-image: url("./resources/img/campL2.jpg");
+	background-position: center;
+	background-size: cover;
+	font-family: sans-serif;
+}
+
+nav a {
+	font-size: 15px;
+	color: #656565;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none !important;
+}
+
+nav a:hover {
+	color: #fff;
+	background-color: #7AB730;
+	border-color: #7AB730;
+}
+</style>
+</head>
+
+<body>
+	<!-- Navbar Start -->
+
+	<div
+		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow"
+		style="margin-bottom: 0px">
+		<h3 class="my-0 mr-md-auto  font-weight-bold" onclick="displayHome()">
+			<img src="./resources/img/logo.ico"
+				style="height: 40px; width: 40px; margin: 0 10px;" />Premium
+			Camping
+		</h3>
+		<nav id="navBarMenu" class="my-2 my-md-0 mr-md-3">
+		
+			<a id="navHome" href="home.xhtml">Home</a>
+			<a class="" href="staffDashboard.xhtml">Staff Dashboard</a> 
+			 <a id=""
+				href="login.xhtml">Log Out</a>
+		</nav>
+	</div>
+
+	<!-- Navbar End -->
+
+
+
+
+	<!-- Service Start -->
+	<div class="container-fluid py-5" id="services">
+		<div class="container pt-5 pb-3">
+			<div class="text-center mb-3 pb-3">
+				<h2 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h2>
+			</div>
+			<div class="row">
+				<div class="col-lg-4 col-md-6 mb-4">
+					<a href="addPackage.xhtml">
+						<div class="service-item bg-white text-center mb-2 py-5 px-4">
+							<i class="fa fa-2x fa-route mx-auto mb-4"></i>
+							<h5 class="mb-2">Add a new Package</h5>
+							<!--                         <p class="m-0">Click to add a new package to the System</p>
+ -->
+						</div>
+					</a>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-4">
+					<a href="viewPackages.xhtml">
+
+						<div class="service-item bg-white text-center mb-2 py-5 px-4">
+							<i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
+							<h5 class="mb-2">View Packages</h5>
+							<!--                         <p class="m-0">Click to view all packages in Premium Camping</p><br></br>
+ -->
+						</div>
+					</a>
+				</div>
+				<!-- <div class="col-lg-4 col-md-6 mb-4">
+					<a href="addPackage.xhtml">
+
+						<div class="service-item bg-white text-center mb-2 py-5 px-4">
+							<i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
+
+							<h5 class="mb-2">Update Packages</h5>
+							                        <p class="m-0">Click to Modify package details</p>
+
+						</div>
+					</a>
+
+				</div> -->
+
+				<div class="col-lg-4 col-md-6 mb-4">
+					<a href="deletePackages.xhtml">
+
+						<div class="service-item bg-white text-center mb-2 py-5 px-4">
+							<i class="fa fa fa-2x fa-hotel mx-auto mb-4"></i>
+							<h5 class="mb-2">Delete Packages</h5>
+							<!--                         <p class="m-0">Click to delete a package from the system</p><br></br>
+ -->
+						</div>
+					</a>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Service End -->
+
+
+
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i
+		class="fa fa-angle-double-up"></i></a>
+
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+	<script src="lib/easing/easing.min.js"></script>
+	<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="lib/tempusdominus/js/moment.min.js"></script>
+	<script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<!-- Contact Javascript File -->
+	<script src="mail/jqBootstrapValidation.min.js"></script>
+	<script src="mail/contact.js"></script>
+
+	<!-- Template Javascript -->
+	<script src="js/main.js"></script>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+	<script src="./resources/js/popper.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		function initBar() {
+			$("#NavBar").load("NavBar.html");
+
+		}
+		initBar();
+
+		function init() {
+			var countTemp = localStorage.getItem('RegisterTimeOut');
+
+			if (false) {// (countTemp > 0) {
+				settime(countTemp);
+			} else {
+				$("#divSendCode").show();
+				$("#btnSendCode").hide();
+			}
+		}
+		function onblusEmail() {
+
+			FacesContext.getCurrentInstance().addMessage("signupMsg",
+					new FacesMessage("Done"));
+			return;
+			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/
+			var str = document.getElementById("rForm:txtEmail").value;
+			if (re.test(str)) {
+				$("#tEmail").text("")
+			} else {
+				$("#tEmail").text(" (Invalid Email address)")
+			}
+		}
+
+		function onblusPWD() {
+			var str = document.getElementById("rForm:txtPWD").value;
+			var str1 = document.getElementById("rForm:txtPWD1").value;
+			if (str == str1) {
+				$("#tpassword").text("")
+			} else {
+				$("#tpassword").text(" (Password not match)")
+			}
+		}
+
+		function RegistComplete(xhr, status, args) {
+			console.log('RegistComplete: ', args);
+			if (args.msg != undefined) {
+				if (args.msg == "OK") {
+					window.location.href = "login.xhtml";
+				}
+			}
+		}
+
+		function handleComplete(xhr, status, args) {
+			console.log('callback: ', args);
+			settime(60)
+		}
+
+		function settime(countdown) {
+			if (countdown == 0) {
+				$("#divSendCode").show();
+				$("#btnSendCode").hide();
+				countdown = 60;
+			} else {
+				$("#divSendCode").hide();
+				$("#btnSendCode").show();
+				$("#btnSendCode").text("Resend(" + countdown + ")");
+				countdown--;
+				localStorage.setItem("RegisterTimeOut", countdown);
+				setTimeout(function() {
+					settime(countdown)
+				}, 1000)
+			}
+
+		}
+		init();
+	</script>
+</body>
+
+</html>

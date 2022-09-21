@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:h="http://java.sun.com/jsf/html" 
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" 
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<h:head>
+	<title>Login Page</title>
+	<link href="./resources/img/logo.ico" rel="icon" />
+	<link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css" />
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/> -->
+	<link href="./resources/css/style.css" rel="stylesheet" />
+	<style>
+		.mainView {
+			/* background-image: url("./resources/img/background_chen.jpg"); */
+			background-repeat: no-repeat;
+			background-size: 100%;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+
+		.ui-state-default {
+			box-shadow: none;
+		}
+
+		a {
+			text-decoration: none !important;
+		}
+
+		.ui-datatable {
+			margin: 5% 8% 0 8%;
+			text-align: center;
+		}
+
+		.ui-datatable thead th {
+			color: black;
+			background-color: #cde3ba;
+			background-image: none !important;
+		}
+
+
+
+		.ui-datatable-even {
+			background-color: #f2f5f9;
+			color: #4f4f4f;
+		}
+
+		.ui-datatable-odd {
+			background-color: white;
+			color: #4f4f4f;
+		}
+	</style>
+</h:head>
+
+<body class="img-fluid mainView" style="background-attachment: fixed; background-position: center;">
+	<div id="NavBar"></div>
+
+	<div class="text-center" style="background-attachment: fixed; background-position: center;">
+		<br />
+		<br />
+		<div class="container">
+
+			<div class="row mb-2">
+				<h:form id="detailForm">
+
+					<div class="row">
+						<div class="col-md-2 mb-4">
+							<label for="country" style="text-align: left !important;float:left;">ReservationNo</label>
+							<p:inputText type="text" class="form-control" id="zip" placeholder=""
+								disabled="#{editBookingDetailBean.booking.bookingDisable}"
+								value="#{editBookingDetailBean.booking.reservationNo}" />
+						</div>
+						<div class="col-md-2 mb-4">
+							<label for="state" style="text-align: left !important;float:left;">Package</label>
+							<h:selectOneMenu class="form-control" onchange="submit()" value="#{editBookingDetailBean.booking.campingPackage.name}"
+								valueChangeListener="#{editBookingDetailBean.valueChangePackage}"
+								disabled="#{editBookingDetailBean.booking.bookingDisable}">
+								<f:selectItems value="#{editBookingDetailBean.packages}" />
+							</h:selectOneMenu>
+						</div>
+						<div class="col-md-2 mb-4">
+							<label for="state" style="text-align: left !important;float:left;">Location</label>
+							<h:selectOneMenu class="form-control" onchange="submit()" value="#{editBookingDetailBean.booking.campingPackage.location}"
+								valueChangeListener="#{editBookingDetailBean.valueChangeLocation}"  
+								disabled="#{editBookingDetailBean.booking.bookingDisable}">
+								<f:selectItems value="#{editBookingDetailBean.locations}" />
+							</h:selectOneMenu>
+						</div>
+						<div class="col-md-3 mb-4">
+							<label for="inline" style="text-align: left !important;float:left;">Checkin Date</label>
+							<p:calendar id="inline" value="#{editBookingDetailBean.booking.checkinTime}" mode="popup"
+								showButtonPanel="true" navigator="true" maxdate="#{editBookingDetailBean.booking.checkoutTime}"
+								disabled="#{editBookingDetailBean.booking.bookingDisable}" />
+						</div>
+						<div class="col-md-3 mb-4">
+							<label for="outTime" style="text-align: left !important;float:left;">Checkout Date</label>
+							<p:calendar id="outTime" value="#{editBookingDetailBean.booking.checkoutTime}"
+								showButtonPanel="true" navigator="true" mindate="#{editBookingDetailBean.booking.checkinTime}"
+								disabled="#{editBookingDetailBean.booking.bookingDisable}" mode="popup" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<label for="country" style="text-align: left !important;float:left;">State:</label>
+							<h:outputText class="badge badge-pill"
+								style=" border-radius:5px; background-color: #cde3ba;"
+								value="#{editBookingDetailBean.booking.state}">
+							</h:outputText>
+						</div>
+						<div class="col-md-2">
+							<label for="country" style="text-align: left !important;float:left;">Pkg Price:</label>
+							€<h:outputText class="badge badge-pill"
+								value="#{editBookingDetailBean.booking.campingPackage.price}">
+								<f:convertNumber type="number" groupingUsed="true" minFractionDigits="2"
+									pattern="#0.00" />
+
+							</h:outputText>
+						</div>
+						<div class="col-md-2">
+							<label for="country" style="text-align: left !important;float:left;">Amount:</label>
+							€
+							<h:outputText class="badge badge-pill" value="#{editBookingDetailBean.booking.amount}">
+								<f:convertNumber type="number" groupingUsed="true" minFractionDigits="2"
+									pattern="#0.00" />
+							</h:outputText>
+						</div>
+						<div class="col-md-3">
+							<label for="country" style="text-align: left !important;float:left;">Booking Date:</label>
+							<h:outputText class="badge badge-pill" value="#{editBookingDetailBean.booking.bookingTime}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</div>
+
+						<div class="col-md-3">
+						</div>
+					</div>
+					<hr class="mb-4" />
+
+					<p:dataTable var="bookingDetail" class="mt-0 ml-0 mr-0"
+						value="#{editBookingDetailBean.booking.bookingDeatils}">
+						<p:column headerText="Type">
+							<h:outputText value="#{bookingDetail.pType}" />
+						</p:column>
+						<p:column headerText="Name">
+							<h:outputText value="#{bookingDetail.myPackage.name}" />
+						</p:column>
+						<p:column headerText="Price">
+							<h:outputText value="€ #{bookingDetail.myPackage.priceString}" >	</h:outputText>
+						</p:column>
+						<p:column headerText="Quantity">
+							<h:outputText value="#{bookingDetail.quantity}" />
+						</p:column>
+						<p:column headerText="Create Date">
+							<h:outputText value="#{bookingDetail.time}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</p:column>
+						<p:column headerText="CreateBy">
+							<h:outputText value="#{bookingDetail.createBy}" />
+						</p:column>
+						<p:column headerText="Delete">
+							<p:commandButton class="btn btn-sm btn-outline-danger" value="Delete"
+								disabled="#{editBookingDetailBean.booking.bookingDisable}"
+								style="background-image: none !important; background: none !important; color: red; "
+								action="#{editBookingDetailBean.RemoveBookingDetail(bookingDetail.detailNo)}">
+							</p:commandButton>
+						</p:column>
+
+					</p:dataTable>
+					<hr class="mb-4" />
+					<p>
+						<a onclick="goBack()" class="btn btn-outline-primary btn-lg " style="margin: 20px 0;">Go
+							Back</a>
+						<p:commandButton class="btn btn-primary btn-lg"
+							rendered="#{!editBookingDetailBean.booking.bookingDisable}"
+							style="margin: 20px; background-image: none !important; padding: 3px;" value="Save"
+							action="#{editBookingDetailBean.OnSave}">
+						</p:commandButton>
+
+						<p:commandButton id="btnMainCheckIn" onclick="showExtrasModal('in')"
+							class="btn btn-outline-primary btn-lg "
+							style="background-image: none !important; padding: 3px;" value="Check-in"
+							rendered="#{!editBookingDetailBean.booking.bookingDisable}"></p:commandButton>
+
+						<p:commandButton id="btnMainCheckOut" onclick="showExtrasModal('out')"
+							class="btn btn-outline-primary btn-lg "
+							style=" margin: 20px; background-image: none !important; padding: 3px;" value="Check-out"
+							rendered="#{!editBookingDetailBean.booking.bookingDisable}"></p:commandButton>
+
+						<p:commandButton type="button" href="#" class="btn btn-success btn-lg"
+							style="background-image: none !important; padding: 3px;" data-toggle="modal"
+							rendered="#{!editBookingDetailBean.booking.bookingDisable}" onclick="showServiceModal()"
+							value="Add an extra"></p:commandButton>
+
+						<p:commandButton class="btn btn-success btn-lg" value="Add a Service"
+							style="margin:0 0 0 20px;background-image: none !important; padding: 3px;"
+							rendered="#{!editBookingDetailBean.booking.bookingDisable}"
+							action="#{editBookingDetailBean.AddAservice(editBookingDetailBean.booking.reservationNo)}">
+							<f:param name="action" value="#{editBookingDetailBean.booking.reservationNo}" />
+						</p:commandButton>
+
+					</p>
+				</h:form>
+
+
+				<!-- Modal -->
+				<div class="modal" id="servicesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div id="serviceDialog" class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h3 class="my-0 mr-md-auto" onclick="displayHome()">
+									<img src="./resources/img/logo.ico"
+										style="height: 40px; width: 40px; margin: 0 10px;" />Premium Camping
+								</h3>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true"></span>
+								</button>
+							</div>
+							<h:form>
+								<div class="modal-body">
+									<p:tabView value="#{editBookingDetailBean.extras}" var="extra" id="tabExtras"
+										dynamic="true" cache="false">
+										<p:tab title="#{extra.name}">
+											<div class="container">
+												<div class="row">
+													<div class="col-md-3 d-flex">
+														<label for="country"
+															style="text-align: left !important;float:left;">Price:
+														</label>
+
+													</div>
+													<div class="col-md-7 d-flex">
+														€
+														<h:outputText value="#{extra.price}">
+															<f:convertNumber type="number" groupingUsed="true"
+																minFractionDigits="2" pattern="#0.00" />
+														</h:outputText>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-3 d-flex">
+														<label for="country"
+															style="text-align: left !important;float:left;">Quantity:
+														</label>
+													</div>
+													<div class="col-md-7 d-flex">
+														<p:spinner value="#{extra.quantity}" min="0" max="15" />
+													</div>
+												</div>
+											</div>
+										</p:tab>
+									</p:tabView>
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+									<p:commandButton class="btn btn-success" value="Save changes"
+										style="margin:0 0 0 20px;background-image: none !important; padding: 3px;"
+										action="#{editBookingDetailBean.AddExtras(editBookingDetailBean.booking.reservationNo)}">
+									</p:commandButton>
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+				<!-- Modal End -->
+
+				<!-- Modal -->
+				<div class="modal" id="extrasPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+					aria-hidden="true">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header" style="display:block;">
+								<img src="./resources/img/logo.ico"
+									style="height: 40px; width: 40px; margin: 0 10px;" />
+								<h3 class="mb-0 font-weight-bold">
+									Premium Camping
+								</h3>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true"></span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<div class="container">
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Reservation No:</span>
+										</div>
+										<div class="col-md-7 d-flex">
+											<span>
+												#{editBookingDetailBean.booking.reservationNo}</span>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">State:</span>
+										</div>
+										<div class="col-md-7 d-flex">
+											<span style="padding: 0 8px; border-radius:5px; background-color: #cde3ba;">
+												#{editBookingDetailBean.booking.state}</span>
+										</div>
+									</div>
+
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Customer:</span>
+										</div>
+										<div class="col-md-7 d-flex">
+											<span
+												style="margin-right: 10px;">#{editBookingDetailBean.booking.user.name}</span>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Email:</span>
+										</div>
+										<div class="col-md-7 d-flex">
+											<span>#{editBookingDetailBean.booking.user.email}</span>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Package:</span>
+										</div>
+										<div class="col-md-7  d-flex">
+											<span style=" margin-right: 10px;">
+												#{editBookingDetailBean.booking.campingPackage.name}</span>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Location:</span>
+										</div>
+										<div class="col-md-7  d-flex">
+											<span>
+												#{editBookingDetailBean.booking.campingPackage.location}</span>
+										</div>
+									</div>
+									<ui:repeat value="#{editBookingDetailBean.booking.bookingDeatils}" var="detail">
+										<div class="row mb-1">
+											<div class="col-md-5 d-flex ">
+												<span class="pull-left text-capitalize" style="color: #7AB730;">
+													#{detail.pType}:</span>
+
+											</div>
+											<div class="col-md-7 d-flex">
+												<span class="text-capitalize">
+													#{detail.myPackage.name}</span>
+												<span style="margin: 0 5px;"> * </span>
+												<span> #{detail.quantity}</span>
+											</div>
+										</div>
+									</ui:repeat>
+
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Amount:</span>
+
+										</div>
+										<div class="col-md-7 d-flex">
+											<span>€
+												<h:outputText value="#{editBookingDetailBean.booking.amount}">
+													<f:convertNumber type="number" groupingUsed="true"
+														minFractionDigits="2" pattern="#0.00" />
+												</h:outputText>
+											</span>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Time:</span>
+										</div>
+										<div class="col-md-7 d-flex">
+											<h:outputText value="#{editBookingDetailBean.booking.checkinTime}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+											<span style="margin:0 5px;">~</span>
+											<h:outputText value="#{editBookingDetailBean.booking.checkoutTime}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+										</div>
+									</div>
+									<div class="row mb-1">
+										<div class="col-md-5 d-flex">
+											<span style="color: #7AB730;">Booking Time:</span>
+
+										</div>
+										<div class="col-md-7  d-flex">
+											<h:outputText value="#{editBookingDetailBean.booking.bookingTime}">
+												<f:convertDateTime pattern="dd/MM/yyyy" />
+											</h:outputText>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								<p:commandButton id="btnCheckIn" class="btn btn-success" value="Check In"
+									style="margin:0 0 0 20px;background-image: none !important; padding: 3px;"
+									action="#{editBookingDetailBean.Checkin(editBookingDetailBean.booking.reservationNo)}">
+									<f:param name="action" value="#{editBookingDetailBean.booking.reservationNo}" />
+								</p:commandButton>
+								<p:commandButton id="btnCheckOut" class="btn btn-success" value="Check Out"
+									style="margin:0 0 0 20px;background-image: none !important; padding: 3px;"
+									action="#{editBookingDetailBean.Checkout(editBookingDetailBean.booking.reservationNo)}">
+									<f:param name="action" value="#{editBookingDetailBean.booking.reservationNo}" />
+								</p:commandButton>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Modal End -->
+			</div>
+
+		</div>
+	</div>
+
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+	<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+	<script src="./resources/js/popper.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		const urlParams = new URLSearchParams(window.location.search);
+		console.log("load:", urlParams.get("id"))
+
+
+		function goBack() {
+			var isStaff = localStorage.getItem("isStaff");
+		console.log("isStaff: ",isStaff);
+		if (isStaff == "true")
+			window.location.href = "modifyReservation.xhtml";
+		else
+			window.location.href = "BookingList.xhtml";
+		}
+		function initBar() {
+			$("#NavBar").load("NavBar.html");
+
+		}
+		initBar();
+
+		function init() {
+			var countTemp = localStorage.getItem('RegisterTimeOut');
+
+			if (false) {// (countTemp > 0) {
+				settime(countTemp);
+			} else {
+				$("#divSendCode").show();
+				$("#btnSendCode").hide();
+			}
+		}
+		function onblusEmail() {
+
+			FacesContext.getCurrentInstance().addMessage("signupMsg",
+				new FacesMessage("Done"));
+			return;
+			var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/
+			var str = document.getElementById("rForm:txtEmail").value;
+			if (re.test(str)) {
+				$("#tEmail").text("")
+			} else {
+				$("#tEmail").text(" (Invalid Email address)")
+			}
+		}
+		function refreshCheck() {
+			var isStaff = localStorage.getItem("isStaff");
+			console.log("isStaff: ", isStaff);
+			if (isStaff == "true") {
+				$("#detailForm\\:btnMainCheckIn").show();
+				$("#detailForm\\:btnMainCheckOut").show();
+			}
+			else {
+				console.log("isStaff: ", $("#detailForm\\:btnMainCheckIn"));
+				$("#detailForm\\:btnMainCheckIn").hide();
+				console.log("isStaff: ", $("#detailForm\\:btnMainCheckOut"));
+				$("#detailForm\\:btnMainCheckOut").hide();
+			}
+		}
+		refreshCheck();
+		function showServiceModal() {
+			$("#servicesModal").modal()
+		}
+		function showExtrasModal(inOrOut) {
+			console.log(inOrOut == "in")
+			if (inOrOut == "in") {
+
+				console.log($("#btnCheckIn"))
+				$("#btnCheckIn").show();
+				console.log($("#btnCheckOut"))
+				$("#btnCheckOut").hide();
+
+			} else {
+				$("#btnCheckIn").hide();
+				$("#btnCheckOut").show();
+			}
+			$("#extrasPanel").modal()
+		}
+		function onblusPWD() {
+			var str = document.getElementById("rForm:txtPWD").value;
+			var str1 = document.getElementById("rForm:txtPWD1").value;
+			if (str == str1) {
+				$("#tpassword").text("")
+			} else {
+				$("#tpassword").text(" (Password not match)")
+			}
+		}
+
+		function RegistComplete(xhr, status, args) {
+			console.log('RegistComplete: ', args);
+			if (args.msg != undefined) {
+				if (args.msg == "OK") {
+					window.location.href = "login.xhtml";
+				}
+			}
+		}
+
+		function handleComplete(xhr, status, args) {
+			console.log('callback: ', args);
+			settime(60)
+		}
+
+		function settime(countdown) {
+			if (countdown == 0) {
+				$("#divSendCode").show();
+				$("#btnSendCode").hide();
+				countdown = 60;
+			} else {
+				$("#divSendCode").hide();
+				$("#btnSendCode").show();
+				$("#btnSendCode").text("Resend(" + countdown + ")");
+				countdown--;
+				localStorage.setItem("RegisterTimeOut", countdown);
+				setTimeout(function () {
+					settime(countdown)
+				}, 1000)
+			}
+
+		}
+		init();
+	</script>
+</body>
+
+</html>

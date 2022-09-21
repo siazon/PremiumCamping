@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<head>
+	<meta charset="ISO-8859-1">
+	</meta>
+	<title>Premium Camping</title>
+	<link href="./resources/img/logo.ico" rel="icon" />
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<link href="./resources/css/confirm.css" rel="stylesheet">
+	</link>
+	<f:metadata>
+		<f:viewParam name="reservationNumber" value="#{confirmPaymentBean.reservationNumber}" />
+		<f:viewAction action="#{confirmPaymentBean.onLoad}" />
+	</f:metadata>
+</head>
+
+<body>
+	<!-- Navbar Start -->
+
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow"
+		style="margin-bottom: 0px">
+		<h3 class="my-0 mr-md-auto  font-weight-bold" onclick="displayHome()">
+			<img src="./resources/img/logo.ico" style="height: 40px; width: 40px; margin: 0 10px;" />Premium Camping
+		</h3>
+		<nav id="navBarMenu" class="my-2 my-md-0 mr-md-3">
+			<a id="navHome" href="home.xhtml">Home</a>
+			<a id="navAboutUs" href="aboutUs.xhtml">About Us</a>
+			<!-- <a id ="" href="AdditionalServices.xhtml">Additional Services</a> -->
+
+		</nav>
+	</div>
+
+	<!-- Navbar End -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 mx-auto mt-5">
+				<div class="payment">
+					<div class="payment_header">
+						<div class="check">
+							<i class="fa fa-check" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div class="content" >
+						<h1>Payment Success !</h1>
+						<p> Thank you for choosing Premium Camping. We are pleased to confirm your reservation </p>
+						<h:form>
+							<h:outputText value="Confirmation number: #{confirmPaymentBean.confirmationNumber}">
+							</h:outputText>
+							<p class="text-center">
+								<p:commandButton class="btn btn-primary" type="submit"
+                                        style="font-size: 1.2em; background-image: none !important; padding: 0 40px;"
+                                        action="#{editBookingDetailBean.GetDetail(booking.reservationNo)}" value="OK"></p:commandButton>
+							</p>
+						</h:form>
+					</div>
+				</div>
+				<img src="./resources/img/paymentComplited.svg" style="width:100%" align="right"></img>
+			</div>
+		</div>
+	</div>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+	<script src="./resources/js/popper.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
+	<script src="./resources/js/checkout.js"></script>
+	<script src="http://kit.fontawesome.com/01be89ff7c.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

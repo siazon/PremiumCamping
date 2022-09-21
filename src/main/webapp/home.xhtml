@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <meta charset="utf-8"></meta>
+    <title>Premium Camping </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"></meta>
+    
+
+    <!-- Favicon -->
+     <link href="./resources/img/logo.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet"></link>
+
+    <!-- Libraries Stylesheet -->
+    <link href="./resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"></link>
+    <link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet"></link>
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="./resources/css/style.css" rel="stylesheet"></link>
+    <style>
+	nav a {
+		font-size: 15px;
+		color: #656565;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none !important;
+	}
+
+	nav a:hover {
+		color: #fff;
+		background-color: #7AB730;
+		border-color: #7AB730;
+	}
+</style>
+</h:head>
+
+<h:body>
+  <!-- Navbar Start -->
+  
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow"
+			style="margin-bottom: 0px">
+			<h3 class="my-0 mr-md-auto  font-weight-bold" onclick="displayHome()">
+				<img src="./resources/img/logo.ico" style="height: 40px; width: 40px; margin: 0 10px;" />Premium Camping
+			</h3>
+			<nav id="navBarMenu" class="my-2 my-md-0 mr-md-3">
+				<a id="navHome" href="home.xhtml">Home</a>
+				<a id="navAboutUs" href="aboutUs.xhtml">About Us</a>
+				<a id="#packages"  href="#packages">Packages</a>
+				<a id="navServices" href="#services">Services</a>
+				<a id="navContact" href="#contact">Contact</a>
+				<!-- <a id ="" href="login.xhtml">Login</a> -->
+                <button id="navLogin" class="btn btn-secondary" type="button" onclick="login()" aria-haspopup="true"
+			aria-expanded="false">
+			Login </button>
+                <div id="navLogout" class="dropdown" style="display:inline;">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="btnUserName" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <a class="dropdown-item" onclick="gotoDashboard()">Dashboard</a>
+                        <a class="dropdown-item" onclick="logout()">Logout</a>
+                    </div>
+                </div>
+			</nav>
+		</div>
+    
+    <!-- Navbar End -->
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0" style="margin-top: 43px">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="./resources/img/background_chen.jpg" alt="Image"></img>
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3">Premium Camping</h4>
+                            <h1 class="display-3 text-white mb-md-4">Let's Discover Camping Together</h1>
+                            <a onclick="bookNow()" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="w-100" src="./resources/img/fanct_tentA.jpg" alt="Image"></img>
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3">Premium Camping</h4>
+                            <h1 class="display-3 text-white mb-md-4">Discover Amazing Places With Us</h1>
+                            <a onclick="bookNow()" class="btn btn-primary py-md-3 px-md-5 mt-2">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-prev-icon mb-n2"></span>
+                </div>
+            </a>
+            <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+                <div class="btn btn-dark" style="width: 45px; height: 45px;">
+                    <span class="carousel-control-next-icon mb-n2"></span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- Carousel End -->
+
+  
+
+
+
+    <!-- About Start -->
+    <div class="container-fluid py-5">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-lg-6" style="min-height: 500px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="./resources/img/camping2.jpeg" style="object-fit: cover;"></img>
+                    </div>
+                </div>
+                <div class="col-lg-6 pt-5 pb-lg-5">
+                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Premium Camping</h6>
+                        <h1 class="mb-3">We Provide Best Camping Packages In Your Budget</h1>
+                        <p>The Award Winning Premium Camping park is ideal base for touring in Ireland. Being 238 meters above sea level this camping village is highest village in Ireland and is surrounded by some some spectacular scenery.It is popular for hiking and water sports. Park facilities include 5 locations, 4 types of accommodations. On camp side you can enjoy in our restaurants, play area for children, take-away service. Let your journey begin now.   </p>
+                        <div class="row mb-4">
+                            <div class="col-6">
+                                <img class="img-fluid" src="./resources/img/aboutUs2.jpg" alt=""></img>
+                            </div>
+                            <div class="col-6">
+                                <img class="img-fluid" src="./resources/img/aboutUsAlex.jpg" alt=""></img>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Feature Start -->
+    <div class="container-fluid pb-5" style="margin-top: 9%;">
+        <div class="container pb-5" style=" padding-top: 20px;">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-money-check-alt text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Competitive Pricing</h5>
+                            <p class="m-0">On our web-site you can find affordable accommodation. Our loyal visitors can enjoy additional discounts.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-award text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Best Services</h5>
+                            <p class="m-0">From glamping under stars to best hiking paths on premium camping park is a lot on offers to ensure happy campers.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex mb-4 mb-lg-0">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center bg-primary mr-3" style="height: 100px; width: 100px;">
+                            <i class="fa fa-2x fa-globe text-white"></i>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <h5 class="">Travel insurance</h5>
+                            <p class="m-0"> Instant cover available, no hidden fees. With booking on our side in price is included medical coverage for your stay. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Feature End -->
+
+
+    <!-- Destination Start -->
+    <div class="container-fluid py-5" id="destinations">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Destination</h6>
+                <h1>Camping Destinations</h1>
+            </div>
+            <div class="row" >
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="./resources/img/forestAlex.jpg" alt=""></img>
+                        <a class="destination-overlay text-white text-decoration-none" >
+                            <h5 class="text-white">Forest side</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="./resources/img/firstAlex.jpg" alt=""></img>
+                        <a class="destination-overlay text-white text-decoration-none" >
+                            <h5 class="text-white">Lake side</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="./resources/img/centerAlex.jpg" alt=""></img>
+                        <a class="destination-overlay text-white text-decoration-none" >
+                            <h5 class="text-white">Center of things</h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="./resources/img/mountainAlex.jpg" alt=""></img>
+                        <a class="destination-overlay text-white text-decoration-none">
+                            <h5 class="text-white">Mountain side</h5>
+                        </a>
+                    </div>
+                </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="destination-item position-relative overflow-hidden mb-2">
+                        <img class="img-fluid" src="./resources/img/glamping1.jpg" alt=""></img>
+                        <a class="destination-overlay text-white text-decoration-none" >
+                            <h5 class="text-white">Glamping village</h5>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Destination End -->
+
+
+    <!-- Service Start -->
+    <div class="container-fluid py-5" id="services">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Camping on site services</h6>
+                <h1>Camping Services</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class='fas fa-hamburger'  style="margin-bottom: 1.5rem; margin-left: auto; margin-right: auto; font-size:36px"></i>
+                        <h5 class="mb-2">Take away</h5>
+                        <p class="m-0">Premium camping provide a take away service. Order the food you love, pay on check -out.
+                        			   Delivery time 30-45 minutes. Our many you can take from reception,or from restaurant</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                        <i class="fa fa-2x fa-ticket-alt mx-auto mb-4"></i>
+                        <h5 class="mb-2">Reservations</h5>
+                        <p class="m-0">Premium camping provide reservations for the restaurant. The table in restaurant need to be booked in advance by phone or in the reception.</p><br></br>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4" >
+                    <div class="service-item bg-white text-center mb-2 py-5 px-4">
+                         <i class="fa fa-child fa-3x" aria-hidden="true"  style="margin-bottom: 1.5rem; margin-left: auto; margin-right: auto;"></i>
+                       
+                        <h5 class="mb-2">Booking child care</h5>
+                        <p class="m-0">Our free child-care service is available from children over 3 years. We are providing the quality service with educated teachers. Booking in advance on reception.</p>
+                    </div>
+                </div>
+                  
+		       		<div class="container pt-5 pb-3">
+		            	<div class="row">
+		               		 <div class="col-lg-4 col-md-6 mb-4">
+		                   		 <div class="package-item bg-white mb-2">
+		                       	 <img class="img-fluid" src="./resources/img/take-awayA.jpg" alt=""></img>
+		                    </div>
+		              	   </div>
+				           <div class="col-lg-4 col-md-6 mb-4">
+		                   		 <div class="package-item bg-white mb-2">
+		                       	 <img class="img-fluid" src="./resources/img/restorantA.jpg" alt=""></img>
+		                    	</div>
+		              	   </div>
+		              	   <div class="col-lg-4 col-md-6 mb-4">
+		                   		 <div class="package-item bg-white mb-2">
+		                       	 <img class="img-fluid" src="./resources/img/kids-serviceA.jpg" alt=""></img>
+		                    </div>
+		              	   </div>
+		          		  </div>
+			     	 </div>
+	   			</div>
+            </div>
+        </div>
+   
+  
+    <!-- Service End -->
+
+
+    <!-- Packages Start -->
+    <div class="container-fluid py-5" id="packages">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
+                <h1>Camping Packages</h1>
+            </div>
+            <div class="row" style="justify-content: center">
+                <div class="col-lg-4 col-md-6 mb-4"  style="box-sizing: content-box;">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="./resources/img/tree-house.jpg" alt=""></img>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>200m from center of things</small>
+                            </div>
+                            <a class="h5 text-decoration-none">Tree house </a>
+	                          <ul>
+	                          	<li>Accommodation for 2 people</li>
+	                          	<li>Forest view</li>
+	                          	<li>1 king size bed</li>
+	                          </ul>
+	                           <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>4.5</h6>
+                                    <h5 class="m-0">&#8364;50</h5>
+                                </div>
+                            </div>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"  style="box-sizing: content-box;">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="./resources/img/secondAlex1.jpg" alt=""></img>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>400m from center of things</small>
+                            </div>
+                            <a class="h5 text-decoration-none" >Wooden lodge</a>
+                            <ul>
+	                          	<li>Family accommodation</li>
+	                          	<li>Lake view</li>
+	                          	<li>2 king size bed</li>
+	                          </ul>
+	                             <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>3.5</h6>
+                                    <h5 class="m-0">&#8364;60</h5>
+                                </div>
+                            </div>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"  style="box-sizing: content-box;">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="./resources/img/vanA.jpg" alt=""></img>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i> 500m of center of things</small>
+                            </div>
+                            <a class="h5 text-decoration-none"> Mobile homes</a>
+                             <ul>
+	                          	<li>Family accommodation</li>
+	                          	<li>Small kitchen</li>
+	                          	<li>1 double bed &amp; 2 single beds</li>
+	                          </ul>
+	                          <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>5.0</h6>
+                                    <h5 class="m-0">&#8364;80</h5>
+                                </div>
+                            </div>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4"  style="box-sizing: content-box;">
+                    <div class="package-item bg-white mb-2">
+                        <img class="img-fluid" src="./resources/img/forestAlex.jpg" alt=""></img>
+                        <div class="p-4">
+                            <div class="d-flex justify-content-between mb-3">
+                                <small class="m-0"><i class="fa fa-map-marker-alt text-primary mr-2"></i>100m of center of things</small>
+                            </div>
+                            <a class="h5 text-decoration-none">Tent</a>
+                            	<ul>
+		                          	<li>Accommodation for 1 person </li>
+		                          	<li>Mountain view</li>
+		                          	<li>Sleeping bag</li>
+	                          	</ul>
+	                            <div class="border-top mt-4 pt-4">
+	                                <div class="d-flex justify-content-between">
+	                                    <h6 class="m-0"><i class="fa fa-star text-primary mr-2"></i>3.0</h6>
+	                                    <h5 class="m-0">&#8364;30</h5>
+	                                </div>
+                           		</div>
+                            <div class="border-top mt-4 pt-4">
+                                <div class="d-flex justify-content-between">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       
+    </div>
+    <!-- Packages End -->
+    
+    <!-- Extras Start -->
+     <div class="container-fluid py-5">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;"> Pre-bookable extras</h6>
+                <h1>Camping Extras</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/aboutUs2.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Welcome Packages</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/towel2.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Towels</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/duvetsA.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Linen duvet set</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/linenA.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Linen</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <!-- Extras End -->
+    
+
+    <!-- Contact Start -->
+    <div class="container-fluid py-5" id="contact">
+        <div class="container py-5">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Contact</h6>
+                <h1>Contact For Any Query</h1>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-form bg-white" style="padding: 30px;">
+                        <div id="success"></div>
+                        <h:form name="sentMessage" id="contactForm" >
+			    			<p:messages id="messages" showDetail="true" showSummary="false" closable="true">
+			    			</p:messages>
+                            <div class="form-row">
+                                <div class="control-group col-sm-6">
+                                 <h:panelGroup>
+                                     <p:inputText type="text" class="form-control p-4" id="name" placeholder="Your name" 
+                                      required="true" requiredMessage="Name can not be empty field" data-validation-required-message="Please enter your name" value="#{ContactFormBean.userName}" >
+                                        </p:inputText>
+                                 </h:panelGroup>
+                                    <p class="help-block text-danger"></p>
+                                </div>
+                                 <div class="control-group col-sm-6">
+                                	<h:panelGroup>
+                                    <p:inputText type="email" class="form-control p-4" id="email"  placeholder="Your email"
+                                        required="true" data-validation-required-message="Please enter your email" value="#{ContactFormBean.email}">
+                                    
+                                    </p:inputText>
+                                    <p class="help-block text-danger"></p>
+                                    </h:panelGroup>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                            <h:panelGroup>
+                                <p:inputText type="text" class="form-control p-4" id="subject"  placeholder="Subject"
+                                   required="true" data-validation-required-message="Please enter a subject" requiredMessage="Subject can not be empty field" value="#{ContactFormBean.subject}">
+                                </p:inputText>
+                                <p class="help-block text-danger"></p>
+                             </h:panelGroup>
+                            </div>
+                            <div class="control-group">
+                            <h:panelGroup>
+                                <p:inputTextarea class="form-control py-3 px-4" rows="5" id="message" placeholder="Message"
+                                   required="true"
+                                    data-validation-required-message="Please enter your message" requiredMessage="Message can not be empty field" value="#{ContactFormBean.message}" ></p:inputTextarea>
+                                <p class="help-block text-danger"></p>
+                            </h:panelGroup>
+                            </div>
+                            <div class="text-center">
+                            <h:panelGroup>
+                                <p:commandButton class="btn btn-primary py-3 px-4" type="submit" id="sendMessageButton"
+                                	value=" Send Message" action="#{ContactFormBean.sendEmail}" update="contactForm">
+                               	</p:commandButton>
+                            </h:panelGroup>
+                            </div>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+    <!-- Team Start -->
+    <div class="container-fluid py-5" id = "team">
+        <div class="container pt-5 pb-3">
+            <div class="text-center mb-3 pb-3">
+                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Team members</h6>
+                <h1>Camping team</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/team-1.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Shinaed Keneddy</h5>
+                            <p class="m-0">Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/team-2.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Mark Cole</h5>
+                            <p class="m-0">Receptionist</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/team-3.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Keaty Finn</h5>
+                            <p class="m-0">Kids Camp Leader</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6 pb-2">
+                    <div class="team-item bg-white mb-4">
+                        <div class="team-img position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="./resources/img/team-4.jpg" alt=""></img>
+                        </div>
+                        <div class="text-center py-4">
+                            <h5 class="text-truncate">Tom Jones</h5>
+                            <p class="m-0">Head Chef</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">PREMIUM</span>CAMPING</h1>
+                </a>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">Follow Us</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-primary btn-square mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a class="btn btn-outline-primary btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Useful Links</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" href="aboutUs.html"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" href="#destinations"><i class="fa fa-angle-right mr-2"></i>Destination</a>
+                    <a class="text-white-50 mb-2" href="#services"><i class="fa fa-angle-right mr-2"></i>Services</a>
+                    <a class="text-white-50 mb-2" href="#packages"><i class="fa fa-angle-right mr-2"></i>Packages</a>
+                    <a class="text-white-50 mb-2" href="#team"><i class="fa fa-angle-right mr-2"></i>Guides</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Us</h5>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Premium Camping, Spiddle West, Co.Galway</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+353 8000 00</p>
+                <p><i class="fa fa-envelope mr-2"></i>aleksandra.micunovic25@gmail.com</p>
+                                 
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-right">
+                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">Sprinters</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script> -->
+    <link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Template Javascript -->
+       <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+    <script src="./resources/js/popper.min.js"></script>
+    <script src="./resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        function initBar() {
+            $("#NavBar").load("NavBar.html");
+
+        }
+        initBar();
+        $("#btnUserName").text(localStorage.getItem("username"));
+        function init() {
+            var countTemp = localStorage.getItem('RegisterTimeOut');
+
+            if (false) {// (countTemp > 0) {
+                settime(countTemp);
+            } else {
+                $("#divSendCode").show();
+                $("#btnSendCode").hide();
+            }
+        }
+        $("#btnUserName").text(localStorage.getItem("username"));
+	function gotoDashboard() {
+		var isStaff = localStorage.getItem("isStaff");
+		console.log("isStaff: ",isStaff);
+		if (isStaff == "true")
+			window.location.href = "staffDashboard.xhtml";
+		else
+			window.location.href = "customerDashboard.xhtml";
+	}
+    var loginFlag = localStorage.getItem("isLogin");
+	if (loginFlag == 'true') {
+		$("#navLogout").show();
+		$("#navLogin").hide();
+
+	}
+	else {
+		$("#navLogout").hide();
+		$("#navLogin").show();
+	}
+    function bookNow(){
+        if (loginFlag == 'true') {
+			window.location.href = "CustomerBooking.xhtml";
+	}
+	else {
+			window.location.href = "login.xhtml";
+	}
+    }
+    function login() {
+		window.location.href = "login.xhtml";
+	}
+    function logout() {
+		$("#navLogout").hide();
+		$("#navLogin").show();
+		localStorage.setItem("isLogin", false);
+		window.location.href = "home.xhtml";
+	}
+        function onblusEmail() {
+
+            FacesContext.getCurrentInstance().addMessage("signupMsg", new FacesMessage("Done"));
+            return;
+            var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/
+            var str = document.getElementById("rForm:txtEmail").value;
+            if (re.test(str)) {
+                $("#tEmail").text("")
+            } else {
+                $("#tEmail").text(" (Invalid Email address)")
+            }
+        }
+
+        function onblusPWD() {
+            var str = document.getElementById("rForm:txtPWD").value;
+            var str1 = document.getElementById("rForm:txtPWD1").value;
+            if (str == str1) {
+                $("#tpassword").text("")
+            } else {
+                $("#tpassword").text(" (Password not match)")
+            }
+        }
+
+        function RegistComplete(xhr, status, args) {
+            console.log('RegistComplete: ', args);
+            if (args.msg != undefined) {
+                if (args.msg == "OK") {
+                    window.location.href = "login.xhtml";
+                }
+            }
+        }
+
+        function handleComplete(xhr, status, args) {
+            console.log('callback: ', args);
+            settime(60)
+        }
+
+        function settime(countdown) {
+            if (countdown == 0) {
+                $("#divSendCode").show();
+                $("#btnSendCode").hide();
+                countdown = 60;
+            } else {
+                $("#divSendCode").hide();
+                $("#btnSendCode").show();
+                $("#btnSendCode").text("Resend(" + countdown + ")");
+                countdown--;
+                localStorage.setItem("RegisterTimeOut", countdown);
+                setTimeout(function () {
+                    settime(countdown)
+                }, 1000)
+            }
+
+        }
+        init();
+    </script>
+</h:body>
+
+</html>

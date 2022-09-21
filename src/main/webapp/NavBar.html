@@ -1,0 +1,77 @@
+<style>
+	nav a {
+		font-size: 15px;
+		color: #656565;
+		text-align: center;
+		padding: 14px 16px;
+		text-decoration: none !important;
+	}
+
+	nav a:hover {
+		color: #fff;
+		background-color: #7AB730;
+		border-color: #7AB730;
+	}
+</style>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow"
+	style="margin-bottom: 0px">
+	<h3 class="my-0 mr-md-auto  font-weight-bold" onclick="displayHome()">
+		<img src="./resources/img/logo.ico" style="height: 40px; width: 40px; margin: 0 10px;" />Premium Camping
+	</h3>
+	<nav id="navBarMenu" class="my-2 my-md-0 mr-md-3">
+		<a id="navHome" href="home.xhtml">Home</a>
+		<!-- <a id="navAboutUs" href="aboutUs.xhtml">About Us</a>
+		<a id="#packages" href="home.xhtml">Packages</a>
+		<a id="navServices" href="home.xhtml">Services</a>
+		<a id="navContact" href="home.xhtml">Contact</a> -->
+		<button id="navLogin" class="btn btn-secondary" type="button" onclick="login()" aria-haspopup="true"
+			aria-expanded="false">
+			Login </button>
+		<div id="navLogout" class="dropdown" style="display:inline;">
+			<button class="btn btn-secondary dropdown-toggle" type="button" id="btnUserName" data-toggle="dropdown"
+				aria-haspopup="true" aria-expanded="false">
+				
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<a class="dropdown-item" onclick="gotoDashboard()">Dashboard</a>
+				<a class="dropdown-item" onclick="logout()">Logout</a>
+			</div>
+		</div>
+	</nav>
+</div>
+<script>
+	// window.onload = function () {
+	var loginFlag = localStorage.getItem("isLogin");
+	if (loginFlag == 'true') {
+		$("#navLogout").show();
+		$("#navLogin").hide();
+
+	}
+	else {
+		$("#navLogout").hide();
+		$("#navLogin").show();
+	}
+	// };
+console.log('userName: ',localStorage.getItem("username"))
+	$("#btnUserName").text(localStorage.getItem("username"));
+	function gotoDashboard() {
+		var isStaff = localStorage.getItem("isStaff");
+		console.log("isStaff: ",isStaff);
+		if (isStaff == "true")
+			window.location.href = "staffDashboard.xhtml";
+		else
+			window.location.href = "customerDashboard.xhtml";
+	}
+	function displayHome() {
+		window.location.href = "home.xhtml";
+	}
+	function login() {
+		window.location.href = "login.xhtml";
+	}
+	function logout() {
+		$("#navLogout").hide();
+		$("#navLogin").show();
+		localStorage.setItem("isLogin", false);
+		window.location.href = "home.xhtml";
+	}
+</script>

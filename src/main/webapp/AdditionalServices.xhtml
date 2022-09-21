@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>AdditionalServices</title>
+	<link href="./resources/img/logo.ico" rel="icon" />
+	<link
+		href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+		rel="stylesheet" />
+	<!-- Font Awesome -->
+	<link
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+		rel="stylesheet" />
+	<link href="./resources/css/style.css" rel="stylesheet" />
+	<style>
+		.mainView {
+			/* background-image: url("./resources/img/background_chen.jpg"); */
+			background-image: url(./resources/img/staff.jpg);
+			background-repeat: no-repeat;
+			background-size: 100%;
+		}
+
+		.ui-state-default {
+			box-shadow: none;
+		}
+
+		a {
+			text-decoration: none !important;
+		}
+
+		.hide {
+			display: none;
+		}
+
+		.grid-radio td {
+			padding: .5rem;
+		}
+
+		.legend {
+			display: inline-block;
+			width: 1.5rem;
+			height: 1.5rem;
+			border-radius: .25rem;
+			vertical-align: sub;
+		}
+
+		.buttons .ui-button:nth-child(1) {
+			background: url("./resources/img/restorantA.jpg") no-repeat;
+		}
+
+		.buttons .ui-button:nth-child(2) {
+			background: url("./resources/img/restorantA.jpg") no-repeat;
+			/* url("#{resource['img/myImg2.png']}") no-repeat; */
+		}
+
+		.buttons .ui-button:nth-child(3) {
+			background: url("./resources/img/restorantA.jpg") no-repeat;
+			/* url("#{resource['img/myImg2.png']}") no-repeat; */
+		}
+
+		.aaa {
+			max-height: 100px !important;
+		}
+	</style>
+</h:head>
+
+<body class="img-fluid "
+	style="background-attachment: fixed; background-position: center;">
+
+	<!-- Nav Bar -->
+	<div id="NavBar"></div>
+	
+	<!-- Services Start -->
+    <div class="container-fluid py-3 mainView" >
+        <div class="container py-5">
+        <div class="row">
+        	<h1 class="text-white mb-5">Premium Camping On-site Services</h1>
+        </div>
+            <div class="row">
+				<div class="col-lg-4 col-md-6 mb-4">
+					<div class="package-item bg-white pb-1">
+						<img class="img-fluid w-100" src="./resources/img/services/1.jpg" alt=""></img>
+						<div class="p-4" style="">
+							<h5 class="text-primary text-uppercase text-decoration-none pb-3">Happy Camper Restaurant</h5>
+							<p>Enjoy a delicious meal at our unique camping themed restaurant. Indoor and outdoor dining areas available.
+								Book a table online or contact us. Opening hours 6pm - 10pm daily.</p><br></br>
+							<div class="border-top mt-4 pt-4">
+								<div class="d-flex justify-content-between">
+									<h5 class="m-0">€25.00</h5>
+									<h6 class="m-0">per person</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 mb-4">
+					<div class="package-item bg-white pb-1">
+						<img class="img-fluid w-100" src="./resources/img/services/6.jpg" alt=""></img>
+						<div class="p-4" style="">
+							<h5 class="text-primary text-uppercase text-decoration-none pb-3">Takeaway Service</h5>
+							<p>Order fresh and tasty takeaway food from our Happy Camper Restaurant. Wide selection of Breakfast, Lunch and Dinner packs.
+								Vegetarian and Vegan options available. Order online or contact us.Takeaway services from 8am – 8pm daily.</p>
+							<div class="border-top mt-4 pt-4">
+								<div class="d-flex justify-content-between">
+									<h5 class="m-0">€10.00</h5>
+									<h6 class="m-0">per meal pack</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-4 col-md-6 mb-4">
+					<div class="package-item bg-white pb-1">
+						<img class="img-fluid w-100" src="./resources/img/services/4.jpg" alt=""></img>
+						<div class="p-4" style="">
+							<h5 class="text-primary text-uppercase text-decoration-none pb-3">Happy Kids Baby-Sitting Service</h5>
+							<p>Baby-sitting services at our Happy Kids Baby-Sitting service. Wide range of indoor and outdoor activities for kids to engage and have fun.
+								Book online or contact us. Services available from 10am - 6pm daily.</p><br></br>
+							<div class="border-top mt-3 pt-3">
+								<div class="d-flex justify-content-between">
+									<h5 class="m-0">€10.00</h5>
+									<h6 class="m-0">per kid (1 hour)</h6>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+    <!-- Services End -->
+
+	<!-- Booking Search Start -->
+	<div class="container-fluid booking mt-5">
+		<div class="container">
+			<div class="bg-light shadow" style="padding: 30px;">
+				<div class="rowlr" style="min-height: 60px;">
+					<!--********************************-->
+					<!--********** SEARCH FORM *********-->
+					<!--********************************-->
+					<h:form id="searchForm" class="m-3">
+						<div class="form-row"><div class="col"><h6 style="color: grey">Reservation number</h6></div> </div>
+						<div class="form-row">
+							<div class="col-8">
+								<p:inputText id="reservationNumber"
+											 styleClass="form-control p-4"
+											 placeholder="Reservation Number"
+											 value="#{AdditionalServicesBean.reservationNumber}"
+											 required="true" />
+							</div>
+							<div class="col-4">
+								<p:commandButton
+										id="searchButton"
+										class="btn btn-primary btn-block font-weight-bold"
+										type="submit"
+										style="font-size: 1.2em; background-image: none !important;"
+										oncomplete="searchComplete(xhr, status, args)"
+										update=":searchForm :additionalServiceBookingForm"
+										action="#{AdditionalServicesBean.searchReservation}"
+										process="@this,searchForm"
+										value="Start Booking">
+								</p:commandButton>
+							</div>
+						</div>
+						<p:messages id="errorMsg" styleClass="invalid-feedback" />
+					</h:form>
+					<div class="col-12">
+						<div class="row">
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Booking Search End -->
+
+	<!-- Booking Start -->
+	<h:form id="additionalServiceBookingForm" class="m-3" style="display: none;">
+		<div class="container-fluid" style="padding: 0px;" id="additionalServiceBooking">
+			<div class="container py-5">
+				<div class="row align-items-center">
+
+					<!-- Restaurant -->
+					<div class="col">
+						<div class="card border-0 bg-light shadow p-2">
+							<div class="card-body rounded-bottom bg-white ">
+								<h5 class="text-primary text-uppercase text-decoration-none pb-3">Happy Camper</h5>
+
+								<!-- date selection for restaurant -->
+								<div class="form-row mt-2">
+									<div class="col pb-3">
+										<h6 style="color: grey">Date</h6>
+										<p:calendar value="#{AdditionalServicesBean.bookingDateRestaurant}" />
+									</div>
+								</div>
+
+								<!--time selection for restaurant -->
+								<div class="form-row">
+									<div class="col pb-3">
+										<h6 style="color: grey">Time</h6>
+										<h:selectOneMenu class="form-control"  value="#{AdditionalServicesBean.selectedTimeSlotRestaurant}">
+											<f:selectItems value="#{AdditionalServicesBean.timeSlots}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+
+								<!-- guests selection for restaurant -->
+								<div class="form-row">
+									<div class="col-5 pb-3">
+										<h6 style="color: grey">Guests</h6>
+										<div style="" class="">
+											<p:spinner class="" value="#{AdditionalServicesBean.noOfItemRestaurant}" min="0" max="10" />
+										</div>
+									</div>
+								</div>
+
+								<!-- amount to pay -->
+<!--								<div class="form-row">-->
+<!--									<div class="col-5 pb-3">-->
+<!--										<h6 style="color: grey" id="restaurantTotal">-->
+<!--											<h:outputText value = "#{AdditionalServicesBean.totalRestaurant}" /></h6>-->
+<!--									</div>-->
+<!--								</div>-->
+
+								<!-- buttons for restaurant -->
+								<div class="form-row pt-3">
+									<div class="col">
+										<p:commandButton
+												id="restaurantButton"
+												class="btn btn-primary btn-block font-weight-bold"
+												type="submit"
+												style="font-size: 1.2em; background-image: none !important;"
+												oncomplete="onBookingComplete(xhr, status, args)" update=":searchForm:errorMsg"
+												action="#{AdditionalServicesBean.restaurantTableBooking}"
+												value="Book">
+										</p:commandButton>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+					<!-- Takeaway -->
+					<div class="col">
+						<div class="card border-0 bg-light shadow p-2">
+							<div class="card-body rounded-bottom bg-white ">
+								<h5 class="text-primary text-uppercase text-decoration-none pb-3">Takeaway</h5>
+
+								<!-- date selection for takeaway -->
+								<div class="form-row mt-2">
+									<div class="col pb-3">
+										<h6 style="color: grey">Date</h6>
+										<p:calendar  id="takeawayDate" class="" value="#{AdditionalServicesBean.bookingDateTakeaway}" mode="popup" />
+									</div>
+									<div class="col">
+
+									</div>
+								</div>
+
+								<!--time selection for takeaway -->
+								<div class="form-row">
+									<div class="col pb-3">
+										<h6 style="color: grey">Time</h6>
+										<h:selectOneMenu class="form-control" value="#{AdditionalServicesBean.selectedTimeSlotTakeaway}">
+											<f:selectItems id="takeawayTime" value="#{AdditionalServicesBean.timeSlots}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+
+								<!-- meals selection for takeaway -->
+								<div class="form-row">
+									<div class="col-5 pb-3">
+										<h6 style="color: grey">Meal Packs</h6>
+										<div style="" class="">
+											<p:spinner id="mealPacks" class="" value="#{AdditionalServicesBean.noOfItemTakeaway}" min="0" max="5" />
+										</div>
+									</div>
+								</div>
+
+								<!-- amount to pay -->
+<!--								<div class="form-row">-->
+<!--									<div class="col-5 pb-3">-->
+<!--										<h6 style="color: grey" id="takeawayTotal">-->
+<!--											<h:outputText value = "#{AdditionalServicesBean.totalTakeaway}" /></h6>-->
+<!--									</div>-->
+<!--								</div>-->
+
+								<!-- buttons for takeaway -->
+								<div class="form-row pt-3">
+									<div class="col">
+										<p:commandButton
+												id="takeawayButton"
+												class="btn btn-primary btn-block font-weight-bold"
+												type="submit"
+												style="font-size: 1.2em; background-image: none !important;"
+												oncomplete="onBookingComplete(xhr, status, args)" update=":searchForm:errorMsg"
+												action="#{AdditionalServicesBean.takeawayBooking}"
+												value="Book">
+										</p:commandButton>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Baby Sitting -->
+					<div class="col">
+						<div class="card border-0 bg-light shadow p-2">
+							<div class="card-body rounded-bottom bg-white ">
+								<h5 class="text-primary text-uppercase text-decoration-none pb-3">Happy Kids</h5>
+
+								<!-- date selection for baby sitting -->
+								<div class="form-row mt-2">
+									<div class="col pb-3">
+										<h6 style="color: grey">Date</h6>
+										<p:calendar  id="babySittingDate" value="#{AdditionalServicesBean.bookingDateBabySitting}" mode="popup" />
+									</div>
+									<div class="col">
+									</div>
+								</div>
+
+								<!--time selection for baby sitting -->
+								<div class="form-row">
+									<div class="col pb-3">
+										<h6 style="color: grey">Duration</h6>
+										<h:selectOneMenu class="form-control" value="#{AdditionalServicesBean.selectedTimeSlotBabySitting}">
+											<f:selectItems value="#{AdditionalServicesBean.durations}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+
+								<!-- meals selection for baby sitting -->
+								<div class="form-row">
+									<div class="col-5 pb-3">
+										<h6 style="color: grey">Kids</h6>
+										<div style="" class="">
+											<p:spinner class="" id="noOfItemBabySitting" value="#{AdditionalServicesBean.noOfItemBabySitting}" min="0" max="5" />
+										</div>
+									</div>
+								</div>
+
+								<!-- amount to pay -->
+<!--								<div class="form-row">-->
+<!--									<div class="col-5 pb-3">-->
+<!--										<h6 style="color: grey" id="babySittingTotal">-->
+<!--											<h:outputText value = "#{AdditionalServicesBean.totalBabySitting}" /></h6>-->
+<!--									</div>-->
+<!--								</div>-->
+
+								<!-- buttons for baby sitting -->
+								<div class="form-row pt-3">
+									<div class="col">
+										<p:commandButton
+												id="babySittingButton"
+												class="btn btn-primary btn-block font-weight-bold"
+												type="submit"
+												style="font-size: 1.2em; background-image: none !important;"
+												oncomplete="onBookingComplete(xhr, status, args)" update=":searchForm:errorMsg"
+												action="#{AdditionalServicesBean.babySittingBooking}"
+												value="Book">
+										</p:commandButton>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<!-- button for cancel reservation -->
+				<div class="row align-items-center mt-5">
+					<div class="col">
+						<div class="card border-0 bg-light shadow">
+							<div class="card-body rounded-bottom bg-white ">
+								<div class="row align-items-center">
+									<div class="col-8">
+										<p:commandButton
+												class="btn btn-secondary btn-block font-weight-bold"
+												type="submit"
+												style="font-size: 1.2em; background-image: none !important;"
+												oncomplete="onCancel()"
+												update=":additionalServiceBookingForm" action="#{AdditionalServicesBean.cancelReservationBooking}"
+												value="Cancel">
+										</p:commandButton>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+	<!-- Booking End -->
+
+	<div class="modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<!--						<span aria-hidden="true">&times;</span>-->
+					</button>
+				</div>
+				<div class="modal-body">
+					<p>Modal body text goes here.</p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script> -->
+	<script src="./resources/lib/easing/easing.min.js"></script>
+	<script src="./resources/lib/owlcarousel/owl.carousel.min.js"></script>
+	<script src="./resources/lib/tempusdominus/js/moment.min.js"></script>
+	<script src="./resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+	<script src="./resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+	<!-- Template Javascript -->
+	<!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" /> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+	<script src="./resources/js/popper.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
+	<script src="./resources/js/main.js"></script>
+	<script type="text/javascript">
+		function initBar() {
+			$("#NavBar").load("NavBar.html");
+
+		}
+		initBar();
+		var element = document.getElementById('additionalServiceBookingForm');
+		element.style.display = 'none';
+		
+		// var element2 = document.getElementById('additionalServiceBooking2');
+		// element2.style.display = 'none';
+		
+		function searchComplete(xhr, status, args) {
+			console.log("Search complete : ", args);
+			var element = document.getElementById('additionalServiceBookingForm');
+			// var element2 = document.getElementById('additionalServiceBooking2');
+			if (args.reservationFound == true) {
+				element.style.display = 'block';
+				// element2.style.display = 'block';
+			} else {
+				element.style.display = 'none'
+				// element2.style.display = 'none'
+			}
+		}
+
+		// Load checkout page for additional service booking after success
+		function onBookingComplete(xhr, status, args) {
+			console.log('Booking complete: ', args);
+			if (args.msg != undefined) {
+				if (args.msg == "OK") {
+					if (args.id != undefined) {
+						window.location.href = "checkout.xhtml?reservationNumber=" + args.id;
+					}
+				}
+			}
+
+			if (args.msg == '') {
+				required="true"
+			}
+		}
+
+		function onCancel() {
+			console.log("Canceling the booking ...");
+			element.style.display = 'none';
+		}
+	</script>
+</body>
+
+</html>

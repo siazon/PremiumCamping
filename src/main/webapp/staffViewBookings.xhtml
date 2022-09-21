@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+
+ <!-- @author Kate Goode A00290477 -->
+	<!-- <ui:composition template="">
+	</ui:composition> -->
+	
+	<h:head>
+	<title>Staff View Bookings</title>
+	<!-- Favicon -->
+	<link href="./resources/img/favicon.ico" rel="icon" />
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"
+		rel="stylesheet" />
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+
+	<!-- Libraries Stylesheet -->
+	<link href="./resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+	<link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="./resources/css/style.css" rel="stylesheet" />
+	<style>
+		nav a {
+			font-size: 15px;
+			color: #656565;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		nav a:hover {
+			color: #fff;
+			background-color: #7AB730;
+			border-color: #7AB730;
+		}
+
+		.ui-state-default {
+			box-shadow: none;
+		}
+		
+		/*container-fluid py-5   */
+		/* row align-items-center  */
+		/* .col-lg-5{
+			margin-left: auto;
+			margin-right: auto;
+			width: auto;
+			margin:auto;
+			
+		} */
+		
+		.ui-dialog {
+    width: auto !important;
+}
+
+		a {
+			text-decoration: none !important;
+		}
+	</style>
+</h:head>
+
+
+
+
+<h:body class="img-fluid bg-registration" style="background-attachment: fixed; background-position: center;">
+	<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow"
+		style="margin-bottom: 0px">
+		<h3 class="my-0 mr-md-auto  font-weight-bold" onclick="displayHome()">
+			<img src="./resources/img/logo.ico" style="height: 40px; width: 40px; margin: 0 10px;" />Premium
+			Camping
+		</h3>
+		<h:form>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<ul id="top-navigation-bar">
+				<li><p:commandLink id="nonAjax" action="#{LogoutBean.logout}"
+						oncomplete="handleComplete(xhr, status, args)" class="mr-4"
+						ajax="false" value="Logout" /></li>
+				<li><a href="staffDashboard.xhtml">Staff Dashboard</a></li>
+			</ul>
+			
+		</nav>
+		</h:form>
+	</div>
+	<div class="container-fluid py-5" style="">
+		<div class="container py-5">
+			<div class="row align-items-center">
+				<div class="col-lg-7 mb-5 mb-lg-0">
+					<div class="mb-4">
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="card border-0">
+						<div class="card-header bg-primary text-center p-4">
+							<h1 class="text-white m-0">View All Bookings</h1>
+						</div>
+						<div class="card-body rounded-bottom bg-white p-5 is-invalid">
+							
+							<p:dataTable var="bookings" value="#{viewBookingBean.bookings}">
+							<p:column headerText="ReservationNo">
+								<h:outputText value="#{bookings.reservationNo}"/>
+							</p:column>
+							<p:column headerText="Name">
+								<h:outputText value="#{bookings.user.name}"/>
+							</p:column>
+							<p:column headerText="CheckinTime">
+								<h:outputText value="#{bookings.checkinTime}"/>
+							</p:column>
+							<p:column headerText="CheckoutTime">
+								<h:outputText value="#{bookings.checkoutTime}"/>
+							</p:column>
+							<p:column headerText="State">
+								<h:outputText value="#{bookings.state}"/>
+							</p:column>
+							
+							
+							</p:dataTable>
+							
+								</div>
+								
+								<div>
+									<!-- <button class="btn btn-primary btn-block py-3" type="submit">Log in</button> -->
+									<p:commandButton class="btn btn-primary btn-block py-3"
+										style=" background-image: none !important;" value="Dashboard"
+										action="staffDashboard.xhtml" type="submit"
+										oncomplete="handleComplete(xhr, status, args)" />
+								</div>
+								<!-- <p class="mt-3">
+									Forget your password? <a href="ForgotPassword.xhtml">Reset
+										password</a>
+								</p>
+								<p class="">
+									New to Premium Camping? <a href="Registration.xhtml">Register
+										with us </a>
+								</p> -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	
+</h:body>	
+</html>

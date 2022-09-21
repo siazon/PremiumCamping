@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+<h:head>
+    <title>Booking a package</title>
+    <link href="./resources/img/logo.ico" rel="icon" />
+    <link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <link href="./resources/css/style.css" rel="stylesheet" />
+
+    <style>
+        .mainView {
+            background-image: url("./resources/img/6953995.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+
+        .text {
+            margin-top: 10px;
+            height: 50px;
+        }
+
+        .btnt {
+            margin: 20px 0;
+            border: 1px solid transparent;
+            height: 50px;
+        }
+
+        .txtHeader {
+            font-weight: bold;
+        }
+
+        nav a {
+            font-size: 15px;
+            color: #656565;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background-color: #7AB730;
+            border-color: #7AB730;
+        }
+
+        .ui-state-default {
+            box-shadow: none;
+        }
+
+        .form-group {
+            /* font-size: 1.2em; */
+        }
+        
+        .calendarB {
+        	padding: 0px;
+        	width: 5px;
+        } 
+        
+        div.polaroid {
+  			width: 50%;
+  			background-color: white;
+  			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  			margin-bottom: 25px;
+  			margin-left: auto;
+  			margin-right: auto;
+		} 
+		
+		.myTab .ui-tabs.ui-tabs-top > .ui-tabs-nav {
+    		color:pink;
+		}   
+        
+        
+    </style>
+</h:head>
+
+<body>
+    <!-- Navbar Start -->
+
+    <div id="NavBar">
+    </div>
+
+    <!-- Navbar End -->
+
+    <!-- Main Start -->
+    <div class="container-fluid p-0" style="margin-top: 43px">
+        <div id="header-carousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src="./resources/img/pc-bannerCD.png" alt="Image"></img>
+                    <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                        <div class="p-3" style="max-width: 900px;">
+                            <h4 class="text-white text-uppercase mb-md-3">Premium Camping</h4>
+                            <h2 class="text-white mb-md-4">Select details for your booking and click submit</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Start -->
+    <div class="container-fluid booking mt-5 pb-5">
+        <h:form>
+            <div class="container pb-5">
+                <div class="bg-light shadow" style="padding-top: 20px;">
+                    <div class="row align-items-center" style="min-height: 60px;">
+                        <div class="col-md-10">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+
+                                        <h6 style="text-align:center; color:grey">Location</h6>
+                                        <h:selectOneMenu class="custom-select px-4" styleClass="custom-select px-4" style="height: 40px;"
+                                            value="#{BookingBean.selecetedLocation}">
+                                            <f:selectItems value="#{BookingBean.locations}" />
+                                        </h:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <h6 style="text-align:center; color:grey">Type</h6>
+                                        <h:selectOneMenu class="custom-select px-4" style="height: 40px;"
+                                            value="#{BookingBean.selecetedPackage}" required="true">
+                                            <f:selectItems value="#{BookingBean.packages}" />
+                                        </h:selectOneMenu>                                  
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <h6 style="text-align:center; color:grey">From</h6>
+                                        <p:calendar class="calendarB" style="height: 10px;" id="calendarCI" value="#{BookingBean.checkInDate}" mode="popup" />
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="mb-3 mb-md-0">
+                                        <h6 style="text-align:center; color:grey">To</h6>
+                                        <p:calendar class="calendarB" id="calendarCO" style="padding-left:3px;"
+                                            value="#{BookingBean.checkOutDate}" mode="popup" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                                <p:commandButton class="btn-primary" disabled="#{booking.bookingDisable}"
+									value="Submit" style="margin: 10px !important; display: inline !important; background-image: none !important;"
+									action="#{BookingBean.addBooking}" icon="pi pi-external-link" onclick="PF('costoDialog').show()" >
+								</p:commandButton>
+								
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+    </div>
+
+    <!-- Booking End -->
+    
+    
+    <p:dialog header="Premium Camping" widgetVar="costoDialog" minHeight="40" width="450" showEffect="fade">
+    <p class="m-0 text-primary" style="text-align: center; color:grey;"> IMPORTANT </p>
+    	<p></p>
+    	 <p class="m-0" style="text-align: center; color:grey;">By clicking proceed, you are confirming your booking. You can cancel or modify you booking from your dashboard. </p>
+    	 <p class="m-0" style="text-align: center; color:black;">For this package our capacity is: </p>
+    	 <p class="m-0" style="text-align: center; color:grey;">2 adults (max) and 3 children(max) </p>
+    	<f:facet name="footer">
+    	<p class="m-0" style="text-align: center; color:black;">Do you wish to continue?  </p>
+    	<p:growl id="message" showDetail="true" />  	
+        	<p:commandButton  class="btn-primary" 
+        		value="Proceed"
+        		action="#{BookingBean.OnSave}" update="message" onclick="PF('costoDialog').hide()" >
+        	</p:commandButton>
+    	</f:facet>
+    </p:dialog>
+	
+
+
+	<!-- Table for displaying data -->
+	<!-- 
+	<div class="container-fluid py-5">
+	<div class="container pt-5 pb-3">
+    <h2 class="heading">Contents of Booking cart</h2>
+    <h:dataTable value="#{BookingBean.bookings}" var="row">
+        <h:column>
+            <h:outputText style="text-align:center; color:black; padding-left:7px;" value="Location: #{row.campingPackage.location} " />
+        </h:column>
+        <h:column>
+            <h:outputText style="text-align:center; color:black; padding-left:20px;" value="Type: #{row.campingPackage.name} " />
+        </h:column>
+        <h:column>
+            <h:outputText style="text-align:center; color:black; padding-left:20px;" value="Check-In:  #{row.checkinTime}" />
+        </h:column>
+        <h:column>
+            <h:outputText style="text-align:center; color:black; padding-left:20px;" value="Check_Out:  #{row.checkoutTime}">
+            <f:convertDateTime pattern="dd/MM/yyyy" />
+            </h:outputText>
+            
+        </h:column>
+    </h:dataTable>
+    </div>
+    </div>
+     -->
+    <!-- Table for displaying data -->
+    
+    <h4 class="text-primary text-uppercase" style="letter-spacing: 5px; text-align:center;"> Add extras or click <a href="BookingList.xhtml" style="color:grey;"> Continue  </a> for payment</h4>
+    
+    <!-- Adding extras Start -->
+    <div class="container-fluid bg-booking py-5" style="margin: 20px 0;">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <div class="mb-4">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Click the tab to see prices</h6>
+                        <h1 class="mb-3">Add pre-bookable extras</h1>
+                    </div>
+                    <h:form id="form">
+    <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true"/>
+
+    <div class="card">
+        <p:accordionPanel widgetVar="basic">
+            <p:tab id="myTab" title="Linen set">
+    			<div class="polaroid">
+  					<img src="./resources/img/linenA.jpg" alt="5 Terre" style="width:100%"></img>
+  					<div class="container">
+  					<h4 class="text-truncate" style="text-align:center; padding-top:2px;">Linen set</h4>
+                            <h5 style="text-align:center; padding-top:2px;">&#8364; 20.00</h5>  
+  					</div>
+				</div>
+            </p:tab>
+            
+            <p:tab title="Towels hire">
+                <div class="polaroid">
+  					<img src="./resources/img/towel2.jpg" alt="5 Terre" style="width:100%"></img>
+  					<div class="container">
+  					<h4 class="text-truncate" style="text-align:center; padding-top:2px;">Towels hire</h4>
+                            <h5 style="text-align:center; padding-top:2px;">&#8364; 5.00</h5>  
+  					</div>
+				</div>
+            </p:tab>
+            
+            <p:tab title="Duvet set">
+            	<div class="polaroid">
+  					<img src="./resources/img/duvetsA.jpg" alt="5 Terre" style="width:100%"></img>
+  					<div class="container">
+  					<h4 class="text-truncate" style="text-align:center; padding-top:2px;">Duvet set</h4>
+                            <h5 style="text-align:center; padding-top:2px;">&#8364; 20.00</h5>  
+  					</div>
+				</div>
+            </p:tab>
+            <p:tab title="Welcome Package">
+            	<div class="polaroid">
+  					<img src="./resources/img/aboutUs2.jpg" alt="5 Terre" style="width:100%"></img>
+  					<div class="container">
+  					<h4 class="text-truncate" style="text-align:center; padding-top:2px;">Duvet set</h4>
+                            <h5 style="text-align:center; padding-top:2px;">&#8364; 5.00</h5>  
+  					</div>
+				</div>
+            </p:tab>
+        </p:accordionPanel>
+    </div>
+    </h:form> 
+    <h5 style="text-align:center; color:gray; padding-top:25px;">If you are unsure, you can also add them after booking from your dashboard.</h5>  
+    </div>
+     
+                <div class="col-lg-5">
+                    <div class="card border-0">
+                        <div class="card-body rounded-bottom bg-white p-5">
+                            <h:form>
+    							
+    								<h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Pre-bookable extras</h6>
+    								<h:dataTable value="#{editBookingDetailBean.extras}" var="extra">
+        								<h:column>
+            								<h:outputText style="text-align:center; padding-top:10px; color:grey; font-size:20px;" value="#{extra.name}" />
+            								<br></br>
+            								<p:spinner value="#{extra.quantity}" min="0" max="5"/>
+            								<br></br>
+            								<h:outputText style="text-align:center; color:white; padding-left:7px;" value="" />
+        								</h:column>
+        
+    								</h:dataTable>
+    							<p:growl id="message" showDetail="true" />  
+    							<p:commandButton styleClass="ActionButton" action="#{BookingBean.addExtraToBooking}" update="message" value="Add" style="background-image: linear-gradient(#7AB730, #7AB730); color:white; font-style: normal;
+    							 letter-spacing: 1px;">
+                                </p:commandButton>
+    								
+    						</h:form>                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Adding extras -->
+    
+    
+    <h4 class="text-primary text-uppercase" style="letter-spacing: 5px; text-align:center; padding-bottom:40px;"> Click <a href="BookingList.xhtml" style="color:grey;"> Continue  </a> for payment</h4>
+
+
+
+
+    <!-- Registration End -->
+
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5"
+        style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-right">
+                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">Sprinters</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="BookingList.xhtml" class="btn btn-lg btn-primary btn-lg-square back-to-top"></a>
+
+
+
+    <!-- Javascript -->
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="./resources/js/popper.min.js"></script>
+    <script src="./resources/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+
+        function initBar() {
+            $("#NavBar").load("NavBar.html");
+
+        }
+        initBar();
+
+        function handleComplete(xhr, status, args) {
+            console.log("logout")
+            localStorage.setItem("isLogin", false);
+        }
+
+        var loginFlag = localStorage.getItem("isLogin");
+        console.log("isLogin:", loginFlag)
+        if (loginFlag == 'false') {
+            console.log("loginFlag == false:", loginFlag)
+            window.location.href = "login.xhtml";
+        }
+
+        function showModal() {
+            $("#exampleModal").modal()
+        }
+
+
+
+    </script>
+</body>
+
+
+
+</html>

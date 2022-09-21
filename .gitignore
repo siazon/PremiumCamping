@@ -1,0 +1,13 @@
+.classpath
+.project
+.settings/
+.tern-project
+.idea
+ 
+# Mac
+.DS_Store
+ 
+# Maven
+log/
+target/
+/bin/

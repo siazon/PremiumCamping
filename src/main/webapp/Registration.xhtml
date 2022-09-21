@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Login Page</title>
+    <link href="./resources/img/logo.ico" rel="icon" />
+    <link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/> -->
+    <link href="./resources/css/style.css" rel="stylesheet" />
+    <style>
+        .mainView {
+            background-image: url("./resources/img/background_chen.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
+        .ui-state-default {
+            box-shadow: none;
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+    </style>
+</h:head>
+
+<body class="img-fluid mainView" style="background-attachment: fixed; background-position: center;">
+    <div id="NavBar">
+
+    </div>
+
+    <div class="container-fluid" style="padding: 0px;">
+        <div class="container py-5">
+            <div class="row align-items-center" style="padding-top: 5%;">
+                <div class="col-lg-7 mb-5 mb-lg-0">
+                    <!-- <div class="mb-4">
+                        <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Mega Offer on this summer</h6>
+                        <h1 class="text-white"><span class="text-primary">Premium Camping</span></h1>
+                    </div>
+                    <p class="text-white">Premium Camping offer lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
+                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
+                        dolor</p>
+                    <ul class="list-inline text-white m-0">
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
+                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
+                    </ul> -->
+                </div>
+                <div class="col-lg-5">
+                    <div class="card border-0">
+                        <div class="card-header bg-primary text-center p-4">
+                            <h1 class="text-white m-0">Sign Up Now</h1>
+                        </div>
+                        <div class="card-body rounded-bottom bg-white p-5">
+                            <h:form id="signupForm">
+                                <p:messages for="signupMsg" closable="true" showDetail="true" showSummary="false"
+                                    autoUpdate="true" />
+                                <div class="form-group">
+                                    <p:inputText type="email" class="form-control p-4" placeholder="Your email"
+                                        onblur="onblusEmail()" value="#{RegistrationBean.email}" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <p:password type="email" class="form-control p-4" placeholder="Your password"
+                                        value="#{RegistrationBean.password}" required="required" />
+                                </div>
+                                <div class="form-group">
+                                    <p:password type="text" class="form-control p-4" placeholder="Your password comfirm"
+                                        value="#{RegistrationBean.password1}" required="required" />
+                                </div>
+                                <div>
+                                    <div id="divSendCode" style="display: inline;">
+                                        <p:commandButton class="btn btn-link" value="Send code"
+                                            oncomplete="handleComplete(xhr, status, args)"
+                                            action="#{RegistrationBean.CreateVerificationCode}"></p:commandButton>
+                                    </div>
+                                    <label id="btnSendCode"
+                                        style="color: #7AB730; height: 30px; margin-left: 10px;"></label>
+                                </div>
+                                <div class="form-group">
+                                    <p:inputText type="email" class="form-control p-4"
+                                        placeholder="Your verificationCode from your eamil"
+                                        value="#{RegistrationBean.verificationCode}" required="required" />
+                                </div>
+                                <div>
+                                    <p:commandButton class="btn btn-primary btn-block font-weight-bold" type="submit"
+                                        style="font-size: 1.2em; background-image: none !important;"
+                                        oncomplete="RegistComplete(xhr, status, args)" update=":signupForm"
+                                        action="#{RegistrationBean.Register}" value="Sign Up"></p:commandButton>
+                                </div>
+                                <div class="py-3">
+                                    <a class="btn btn-outline-primary py-2 btn-block font-weight-bold" type="submit"
+                                        style="font-size: 1.2em;" href="login.xhtml">Back
+                                        to Login</a>
+                                </div>
+
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+    <script src="./resources/js/popper.min.js"></script>
+    <script src="./resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        function initBar() {
+            $("#NavBar").load("NavBar.html");
+            $("#navAboutUs").hide();
+        }
+        initBar();
+        
+        function init() {
+            var countTemp = localStorage.getItem('RegisterTimeOut');
+
+            if (false) {// (countTemp > 0) {
+                settime(countTemp);
+            } else {
+                $("#divSendCode").show();
+                $("#btnSendCode").hide();
+            }
+        }
+        function onblusEmail() {
+
+            FacesContext.getCurrentInstance().addMessage("signupMsg", new FacesMessage("Done"));
+            return;
+            var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/
+            var str = document.getElementById("rForm:txtEmail").value;
+            if (re.test(str)) {
+                $("#tEmail").text("")
+            } else {
+                $("#tEmail").text(" (Invalid Email address)")
+            }
+        }
+
+        function onblusPWD() {
+            var str = document.getElementById("rForm:txtPWD").value;
+            var str1 = document.getElementById("rForm:txtPWD1").value;
+            if (str == str1) {
+                $("#tpassword").text("")
+            } else {
+                $("#tpassword").text(" (Password not match)")
+            }
+        }
+
+        function RegistComplete(xhr, status, args) {
+            console.log('RegistComplete: ', args);
+            if (args.msg != undefined) {
+                if (args.msg == "OK") {
+                    window.location.href = "login.xhtml";
+                }
+            }
+        }
+
+        function handleComplete(xhr, status, args) {
+            console.log('callback: ', args);
+            settime(60)
+        }
+
+        function settime(countdown) {
+            if (countdown == 0) {
+                $("#divSendCode").show();
+                $("#btnSendCode").hide();
+                countdown = 60;
+            } else {
+                $("#divSendCode").hide();
+                $("#btnSendCode").show();
+                $("#btnSendCode").text("Resend(" + countdown + ")");
+                countdown--;
+                localStorage.setItem("RegisterTimeOut", countdown);
+                setTimeout(function () {
+                    settime(countdown)
+                }, 1000)
+            }
+
+        }
+        init();
+    </script>
+</body>
+
+</html>

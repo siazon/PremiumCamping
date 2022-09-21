@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Login Page</title>
+	<!-- Favicon -->
+	<link rel="icon" type="image/x-icon" href="./resources/img/logo.ico" />
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" />
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;display=swap"
+		rel="stylesheet" />
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet" />
+
+	<!-- Libraries Stylesheet -->
+	<link href="./resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+	<link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="./resources/css/style.css" rel="stylesheet" />
+	<style>
+		   .mainView {
+            background-image: url("./resources/img/background_chen.jpg");
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+		nav a {
+			font-size: 15px;
+			color: #656565;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		nav a:hover {
+			color: #fff;
+			background-color: #7AB730;
+			border-color: #7AB730;
+		}
+
+		.ui-state-default {
+			box-shadow: none;
+		}
+
+		a {
+			text-decoration: none !important;
+		}
+	</style>
+</h:head>
+
+
+
+
+<body class="img-fluid mainView" style="background-attachment: fixed; background-position: center;">
+	<div id="NavBar">
+	</div>
+	<div class="container-fluid py-5" style="">
+		<div class="container py-5">
+			<div class="row align-items-center">
+				<div class="col-lg-7 mb-5 mb-lg-0">
+					<div class="mb-4">
+					</div>
+				</div>
+				<div class="col-lg-5">
+					<div class="card border-0">
+						<div class="card-header bg-primary text-center p-4">
+							<h1 class="text-white m-0">Log in</h1>
+						</div>
+						<div class="card-body rounded-bottom bg-white p-5 is-invalid">
+							<h:form id="loginForm">
+								<p:messages id="errorMsg" styleClass="invalid-feedback" />
+								<div class="form-group is-invalid">
+									<p:inputText id="email" styleClass="form-control p-4" placeholder="email"
+										value="#{LoginBean.email}" required="true" />
+								</div>
+								<div class="form-group">
+									<p:password styleClass="form-control p-4" placeholder="password"
+										value="#{LoginBean.password}" required="required" />
+								</div>
+								<div>
+									<!-- <button class="btn btn-primary btn-block py-3" type="submit">Log in</button> -->
+									<p:commandButton class="btn btn-primary btn-block py-3" update=":loginForm"
+										style=" background-image: none !important;" value="Login"
+										action="#{LoginBean.validateUserLogin}" type="submit"
+										oncomplete="handleComplete(xhr, status, args)" />
+								</div>
+								<p class="mt-3">
+									Forget your password? <a href="ForgotPassword.xhtml">Reset
+										password</a>
+								</p>
+								<p class="">
+									New to Premium Camping? <a href="Registration.xhtml">Register
+										with us </a>
+								</p>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+    <script src="./resources/js/popper.min.js"></script>
+    <script src="./resources/js/bootstrap.min.js"></script>
+
+	<script>
+		function initBar() {
+            $("#NavBar").load("NavBar.html");
+        }
+        initBar();
+		function handleComplete(xhr, status, args) {
+			if (args == undefined) {//Because the jump page does not have a msg, so do not jump when passing Error msg
+				localStorage.setItem("isLogin", true);
+				localStorage.setItem("loginEmail", $("#loginForm\\:email").val());
+			}
+
+		}
+
+	</script>
+</body>
+
+
+
+</html>

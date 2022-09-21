@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Login Page</title>
+    <link href="./resources/img/logo.ico" rel="icon" />
+    <link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/> -->
+    <link href="./resources/css/style.css" rel="stylesheet" />
+	<link href="./resources/css/checkout.css" rel="stylesheet"></link>
+	<f:metadata>
+    	<f:viewParam name="reservationNumber" value="#{authorizePaymentBean.reservationNumber}" />
+    <f:viewAction action="#{authorizePaymentBean.onLoad}" />
+</f:metadata>
+</h:head>
+<body>
+    <div id="NavBar">
+    	</div>
+    	  <div class="card">
+        	<div class="leftside">
+          		<img id="img" src="./resources/img/GirlAlex.jpg"></img> 
+   				
+      	    </div>
+      	    <div class="rightside">
+      	    <i class="fa fa-cc-paypal fa-3x" aria-hidden="true" style="padding-bottom: 2px; align-items: right; color: #7AB730"></i>
+          		<h:form action="">
+            		<div class="text-center mb-3 pb-3">
+                		<h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Premium camping</h6>
+                		<h1>Checkout details</h1>
+            		</div>
+            		<p ><b>Registration ID:</b> </p>
+           		    <h:outputText value="#{authorizePaymentBean.registrationId}" ></h:outputText>
+            		<p><b>Package Name:</b></p>
+           		    <h:outputText value="#{authorizePaymentBean.packageName}" ></h:outputText>
+              	    <p><b>Total amount:</b></p>
+           		    <h:outputText value="&#8364; #{authorizePaymentBean.totalAmount}"></h:outputText>
+           		    <p><b>Date:</b></p>
+            		<h:outputText value="#{OrderDetails.formatDate}" >
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText><br></br><br></br><br></br>
+           		    <h:commandButton type="submit" value="Checkout" class="button"  action="#{authorizePaymentBean.checkOut}">
+           		   </h:commandButton>
+          		</h:form>
+      	 	 </div>
+     	 </div>
+		 	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+		    <script src="./resources/js/popper.min.js"></script>
+		    <script src="./resources/js/bootstrap.min.js"></script>
+		    <script src="./resources/js/checkout.js"></script>
+		    <script src="http://kit.fontawesome.com/01be89ff7c.js" crossorigin="anonymous"></script>
+		  
+	</body>
+</html>

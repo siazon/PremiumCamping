@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:p="http://primefaces.org/ui">
+<!-- Author: Laleesha Wijetunga -->
+<h:head>
+	<title>Staff Dashboard</title>
+	<h:outputStylesheet name="css/staffdashboard.css" />
+	<link rel="icon" type="image/x-icon" href="./resources/img/logo.ico" />
+	<link href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+	</link>
+	<!-- 	<link href="./resources/css/style.css" rel="stylesheet"></link> -->
+</h:head>
+
+<h:body>
+	<div class="top-nav-bar">
+		<img id="logo-name" class="logo" src="./resources/img/logo-name.jpeg" style="height: 70px; width:200; margin: 0 40px;"></img>
+	</div>
+	<div class="nav-bar">
+
+		<h:form>
+			<ul id="top-navigation-bar">
+				<li><a href="login.xhtml" onclick="logout()">Log out</a></li>
+				<li><a href="home.xhtml">Home</a></li>
+			</ul>
+		</h:form>
+	</div>
+	<div class="container">
+		<img id="first-image" src="./resources/img/staff.jpg" />
+		<div class="header">
+			<h2>Welcome,<span id="txtUserName">#{username}</span> </h2>
+		</div>
+		<div>
+			<div class="dashboard">
+				<table class="dashboard-block">
+					<tr>
+						<td class="dashboard-element"><a class="dashboard-element-text option-item text-item"
+								href="#"> Make a Booking </a></td>
+						<td class="dashboard-element"><a class="dashboard-element-text option-item text-item"
+								href="modifyReservation.xhtml"> Modify Reservation </a></td>
+						<td class="dashboard-element"><a class="dashboard-element-text option-item text-item"
+								href="packageDesign.xhtml"> Design Packages </a></td>
+					</tr>
+				</table>
+				<table class="dashboard-block">
+					<tr>
+						<td class="dashboard-element"><a class="dashboard-element-text option-item text-item"
+								href="modifyReservation.xhtml"> Check In / Check Out</a></td>
+						<td class="dashboard-element"><a class="dashboard-element-text option-item text-item" href="#">
+								View Daily Reports</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<h2>The Sprinters</h2>
+	</div>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+	<script src="./resources/js/popper.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
+	<script>
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get("isStaff") != null) {
+			localStorage.setItem("isStaff", urlParams.get("isStaff"));
+		}
+		  function logout() {
+				$("#navLogout").hide();
+				$("#navLogin").show();
+				localStorage.setItem("isLogin", false);
+				window.location.href = "home.xhtml";
+			}
+		function handleComplete() {
+			localStorage.setItem("isLogin", false);
+		}
+		var loginFlag = localStorage.getItem("isLogin");
+		if (!loginFlag) {
+			alert("You have not login")
+			window.location.href = "home.xhtml";
+		}
+		function initBar() {
+			localStorage.setItem("username", $("#txtUserName").text());
+			$("#NavBar").load("NavBar.html");
+		}
+		initBar();
+	</script>
+</h:body>
+
+</html>

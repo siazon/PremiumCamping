@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<!--  Author: Thuduhenage Laleesha Wijetunga -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+	<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js" />
+	<script src="./resources/js/popper.min.js"></script>
+	<script src="./resources/js/bootstrap.min.js"></script>
+	<title>View Packages</title>
+	<link href="./resources/img/logo.ico" rel="icon" />
+	<link
+		href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+		rel="stylesheet" />
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+	<link href="./resources/css/Newstyle.css" rel="stylesheet" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<style type="text/css">
+* {
+	margin: 0;
+	padding
+	0;
+}
+
+body {
+	background-image: url("./resources/img/grass-1.jpg");
+	background-position: center;
+	background-size: cover;
+	font-family: sans-serif;
+}
+
+.regform {
+	width: 1000px;
+	background-color: rgb(0, 0, 0, 0.2);
+	margin: auto;
+	color: white;
+	padding: 10px 10px 10px 10px;
+	text-align: center;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.main {
+	background-color: rgb(0, 0, 0, 0.6);
+	width: 600px;
+	margin: auto;
+}
+
+form {
+	padding: 50px 50px 200px 50px;
+	width: 800px;
+}
+
+#summary {
+	width: 100%;
+	height: 100px;
+}
+
+.summary {
+	margin-left: 25px;
+	margin-top: 30px;
+	width: 125px;
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.packagesummary {
+	position: relative;
+	left: 200px;
+	top: -50px;
+	line-height: 80px;
+	border-radius: 6px;
+	padding: 0 22px;
+	font-size: 16px;
+}
+
+.packagelabel {
+	position: relative;
+	color: #E5E5E5;
+	font-size: 14px;
+	left: 203px;
+	top: -45px;
+}
+
+.option {
+	position: relative;
+	left: 320px;
+	top: -32px;
+	line-height: 80px;
+	border-radius: 6px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+	outline: none;
+	overflow: hidden;
+}
+
+.option option {
+	font-size: 20px;
+}
+
+.package {
+	color: white;
+	font-size: 20px;
+	padding: 0 110px;
+}
+
+.package_type_box {
+	position: relative;
+	left: 320px;
+	top: -37px;
+	line-height: 40px;
+	width: 200px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.package_Location {
+	position: relative;
+	left: 320px;
+	top: -37px;
+	line-height: 40px;
+	width: 50px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.package_description {
+	position: relative;
+	left: 320px;
+	top: -37px;
+	line-height: 40px;
+	width: 400px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.package_image {
+	position: relative;
+	left: 320px;
+	top: -37px;
+	line-height: 60px;
+	width: 400px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.heading {
+	padding: 10px 10px 40px 0px;
+	text-align: center;
+	color: white;
+	width: 510px;
+}
+
+.adult_input_box {
+	position: relative;
+	left: 320px;
+	top: -37px;
+	line-height: 40px;
+	width: 80px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.kid_input_box {
+	position: relative;
+	left: 300px;
+	top: -37px;
+	line-height: 40px;
+	width: 80px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.adults_text {
+	color: white;
+	position: relative;
+	font-size: 14px;
+	left: 240px;
+	top: -4px;
+}
+
+.kids_text {
+	color: white;
+	position: relative;
+	font-size: 14px;
+	left: 220px;
+	top: -4px;
+}
+
+.price_input_box {
+	position: relative;
+	left: 320px;
+	top: -37px;
+	line-height: 40px;
+	width: 100px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+}
+
+.price_text {
+	color: white;
+	position: relative;
+	font-size: 14px;
+	left: 220px;
+	top: -4px;
+}
+
+.image_box {
+	position: relative;
+	left: 300px;
+	top: -37px;
+	line-height: 40px;
+	width: 400px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: white;
+}
+
+/* .mainView {
+	background-image: url("./resources/img/addPackage.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+ */
+.text {
+	margin-top: 10px;
+	height: 50px;
+}
+
+.btnt {
+	margin: 20px 0;
+	border: 1px solid transparent;
+	height: 50px;
+}
+
+.txtHeader {
+	font-weight: bold;
+}
+
+nav a {
+	font-size: 15px;
+	color: #656565;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #fff;
+	background-color: #7AB730;
+	border-color: #7AB730;
+}
+
+.ui-state-default {
+	box-shadow: none;
+}
+
+.form-group {
+	/* font-size: 1.2em; */
+	
+}
+
+.inputerror {
+	color: white;
+}
+
+a.designPackagesNav {
+	font-size: 20px;
+	text-decoration: underline;
+}
+
+div.designPackagesNav {
+	padding-top: 20px;
+	padding-left: 5px;
+}
+</style>
+</h:head>
+
+<body class="img-fluid mainView"
+	style="background-attachment: fixed; background-position: center;">
+	<div
+		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow"
+		style="margin-bottom: 0px">
+		<h3 class="my-0 mr-md-auto  font-weight-bold" onclick="displayHome()">
+			<img src="./resources/img/logo.ico"
+				style="height: 40px; width: 40px; margin: 0 10px;" />Premium
+			Camping
+		</h3>
+		<nav class="my-2 my-md-0 mr-md-3">
+		
+			<a class="" href="staffDashboard.xhtml">Staff Dashboard</a> <a
+				class="" href="home.xhtml">Logout</a>
+		</nav>
+	</div>
+
+	<div class="main">
+		<div class="designPackagesNav">
+			<a class="designPackagesNav" href="packageDesign.xhtml">Back</a>
+		</div>
+		<h:form>
+			<h1 class="heading">View Packages</h1>
+			<f:metadata>
+				<f:event type="preRenderView" listener="#{viewPackagesBean.init}" />
+			</f:metadata>
+			<ui:repeat value="#{viewPackagesBean.campingPackages}"
+				var="campingPackage">
+				<div class="col-lg-8" style="box-sizing: content-box; margin-bottom:50px; ">
+					<div class="package-item bg-white mb-2">
+						<p:graphicImage class="img-fluid-service"
+							url="#{campingPackage.imgPath}" />
+						<div class="p-4">
+							<div class="d-flex mb-3">
+								<span style="width: 20px; height: 0px;"> 
+									<i class="fa fa-map-marker" />
+								</span>
+								<span style="width: 200px;" >
+									<h:outputText value="#{campingPackage.location}"
+										style="font-size: 16px ;" />
+								</span>
+							</div>
+							<div>
+								<h:outputText value="#{campingPackage.name}"
+									style="font-size: 20px;" />
+							</div>
+							<div>
+								<h:outputText value="#{campingPackage.description}"
+									style="font-size: 15px;" />
+							</div>
+							<div class="border-top mt-4 pt-4">
+								<div class="d-flex justify-content-between">
+									<div>
+										<div style="float: left;">
+											<h:outputText value="#{campingPackage.adultsPax} Adults"
+												style="font-size: 15px;" />
+										</div>
+										<div style="float: left; clear: left;">
+											<h:outputText value="#{campingPackage.kidsPax} Kids"
+												style="font-size: 15px;" />
+										</div>
+									</div>
+									<h:outputText value="&#8364; #{campingPackage.priceWithDecimal}"
+										style="font-size: 20px;">
+									</h:outputText>
+								</div>
+							</div>
+							<div class="border-top mt-4 pt-4">
+								<div class="d-flex justify-content-between"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</ui:repeat>
+		</h:form>
+	</div>
+</body>
+
+</html>

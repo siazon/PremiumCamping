@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--  Author: Thuduhenage Laleesha Wijetunga -->
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<script name="jquery/jquery.js" library="primefaces"></script>
+	<title>Add Packages</title>
+	<link href="./resources/img/logo.ico" rel="icon" />
+	<link
+		href="./resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"
+		rel="stylesheet" />
+	<!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/5.2.0/css/bootstrap.min.css" rel="stylesheet" /> -->
+	<link href="./resources/css/Newstyle.css" rel="stylesheet" />
+	<style type="text/css">
+* {
+	margin: 0;
+	padding;
+}
+
+body {
+	background-image: url("./resources/img/addPackage.jpg");
+	background-position: center;
+	background-size: cover;
+	font-family: sans-serif;
+}
+
+.regform {
+	width: 800px;
+	background-color: rgb(0, 0, 0, 0.2);
+	margin: auto;
+	color: white;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	border-radius: 15px 15px 0px 0px;
+}
+
+.main {
+	background-color: rgb(0, 0, 0, 0.6);
+	width: 800px;
+	margin: auto;
+}
+
+form {
+	padding: 50px 50px 200px 50px;
+	width: 800px;
+}
+
+.summary {
+	margin-left: 25px;
+	margin-top: 30px;
+	width: 125px;
+	color: white;
+	font-size: 18px;
+	font-weight: 700;
+}
+
+.packagesummary {
+	position: relative;
+	left: 200px;
+	top: -50px;
+	line-height: 80px;
+	border-radius: 6px;
+	padding: 0 22px;
+	font-size: 16px;
+}
+
+.packagelabel {
+	position: relative;
+	color: #E5E5E5;
+	font-size: 14px;
+	left: 203px;
+	top: -45px;
+}
+
+.option {
+	position: relative;
+	left: 320px;
+	top: -32px;
+	line-height: 80px;
+	border-radius: 6px;
+	padding: 0 22px;
+	font-size: 16px;
+	color: #555;
+	outline: none;
+	overflow: hidden;
+}
+
+.option option {
+	font-size: 20px;
+}
+
+.package {
+	color: white;
+	font-size: 20px;
+	padding: 0 110px;
+}
+
+.heading {
+	padding: 10px 10px 40px 0px;
+	text-align: center;
+	color: white;
+}
+
+/* .mainView {
+	background-image: url("./resources/img/addPackage.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+}
+ */
+.text {
+	margin-top: 10px;
+	height: 50px;
+}
+
+.btnt {
+	margin: 20px 0;
+	border: 1px solid transparent;
+	height: 50px;
+}
+
+.txtHeader {
+	font-weight: bold;
+}
+
+nav a {
+	font-size: 15px;
+	color: #656565;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #fff;
+	background-color: #7AB730;
+	border-color: #7AB730;
+}
+
+.ui-state-default {
+	box-shadow: none;
+}
+
+.form-group {
+	/* font-size: 1.2em; */
+	
+}
+
+.inputerror {
+	color: white;
+}
+
+a.designPackagesNav {
+	font-size: 20px;
+	text-decoration: underline;
+}
+
+div.designPackagesNav {
+	padding-top: 20px;
+	padding-left: 5px;
+}
+</style>
+</h:head>
+
+<body class="img-fluid mainView"
+	style="background-attachment: fixed; background-position: center;">
+	<div
+		class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow"
+		style="margin-bottom: 0px">
+		<h3 class="my-0 mr-md-auto  font-weight-bold" onclick="displayHome()">
+			<img src="./resources/img/logo.ico"
+				style="height: 40px; width: 40px; margin: 0 10px;" />Premium
+			Camping
+		</h3>
+		<nav class="my-2 my-md-0 mr-md-3">
+			<a class="" href="staffDashboard.xhtml">Staff Dashboard</a> <a
+				class="" href="home.xhtml">Logout</a>
+		</nav>
+	</div>
+
+	<div class="main">
+		<div class="designPackagesNav">
+			<a class="designPackagesNav" href="packageDesign.xhtml">Back</a>
+		</div>
+		<h:form id="addPackageForm" enctype="multipart/form-data">
+			<p:growl id="message" showDetail="true" showSummary="false" />
+			<h1 class="heading">Add Package</h1>
+
+			<h2 class="package">Package Type</h2>
+			<p:inputText id="packageType" class="package_type_box" type="text"
+				value="#{addPackageBean.packageType}" required="true"
+				requiredMessage="Package Type cannot be empty" />
+
+			<h2 class="package">Package Location</h2>
+			<p:selectOneMenu id="packageLocation" class="package_Location"
+				var="l" value="#{addPackageBean.selectedLocation}" required="true"
+				requiredMessage="Package Location should be selected.">
+				<f:selectItem itemLabel="Select One" itemValue="" />
+				<f:selectItems value="#{addPackageBean.locations}"
+					var="selectedLocation" itemLabel="#{selectedLocation}"
+					itemValue="#{selectedLocation}" />
+				<p:column>
+	 	 			#{l}
+				</p:column>
+			</p:selectOneMenu>
+
+			<h2 class="package">Package Capacity</h2>
+			<p:inputText value="#{addPackageBean.paxAdults}"
+				class="adult_input_box" type="number" />
+			<label class="adults_text">Adults</label>
+			<p:inputText value="#{addPackageBean.paxKids}" class="kid_input_box"
+				type="number" />
+			<label class="kids_text">Kids</label>
+
+			<h2 class="package">Package Price (€)</h2>
+			<p:inputText id="packagePrice" required="true"
+				requiredMessage="Package Price cannot be empty."
+				value="#{addPackageBean.price}" class="package_type_box"
+				validator="#{addPackageBean.validatePrice}"
+				validatorMessage="Only numbers are allowed for the package price.">
+			</p:inputText>
+
+			<h2 class="package">Package Description</h2>
+			<p:inputTextarea id="packageDescription" class="package_description"
+				required="true" value="#{addPackageBean.description}"
+				requiredMessage="Package Description cannot be empty.">
+			</p:inputTextarea>
+
+
+			<h2 class="package">Package Image</h2>
+			<p:fileUpload auto="false" class="package_image" mode="simple"
+				fileLimit="1" required="true"
+				validator="#{addPackageBean.validateImage}"
+				requiredMessage="Package Image cannot be empty."
+				validatorMessage="Please upload an image file."
+				value="#{addPackageBean.packageImage}" update="message" />
+
+			<div class="text-center">
+				<h:panelGroup>
+					<h:commandButton class="btn-add" type="submit"
+						id="addPackageButton" value="Add Package"
+						action="#{addPackageBean.addPackage}" update="message" />
+					<h:commandButton class="btn-reset"
+						action="#{addPackageBean.reload}" immediate="true" type="submit"
+						value="Reset" />
+				</h:panelGroup>
+			</div>
+		</h:form>
+	</div>
+</body>
+
+</html>
